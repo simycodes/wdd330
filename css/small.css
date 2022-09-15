@@ -1,0 +1,87 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*----------- BODY --------------*/
+
+body {
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    background-color: #F4F5F5;
+}
+
+h1, h2, h3, h4 {
+    color: #1573B7;
+    letter-spacing: 0.2rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    font-family:'Playfair Display', serif;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align:center;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+h4 {
+    font-size: 0.9rem;
+}
+
+
+/*----------- MAIN PORTFOLIO HOME PAGE--------------*/
+main div {
+    margin: 0.5rem auto;
+    padding: 0.2rem;
+    width:300px;
+    background-color:#fff0e0;
+}
+
+.my-name {
+    margin-top:none;
+    font-size: .9rem;
+    text-align: center;
+}
+
+.notes-heading {
+    text-decoration: underline;
+}
+
+article h2 {
+    text-decoration: underline;
+}
+
+ol li {
+    margin:.5rem;
+ }
+
+ ol li a {
+    color:#003580;
+}
+
+ol li a:hover {
+    color:#8AB7E9;
+}
+
+/*----------- END OF MAIN PORTFOLIO HOME PAGE--------------*/
+
+
+/*----------- WEEKLY NOTES INDEX PAGE --------------*/
+
