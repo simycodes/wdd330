@@ -85,3 +85,16 @@ ol li a:hover {
 
 /*----------- WEEKLY NOTES INDEX PAGE --------------*/
 
+/*----------- END OF WEEKLY NOTES INDEX PAGE --------------*/
+
+/*----------- WEEKLY EXAMPLE APPLICATION PAGE --------------*/
+
+.application-title {
+    font-size: 1.5rem;
+}
+
+button {
+    margin: .5rem;
+}
+
+/*----------- END OF WEEKLY EXAMPLE APPLICATION PAGE --------------*/

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Recorder & Editor (Local Storage - Remembering User Info)</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <script>
+
+        function loadStory(){
+            var storyName = document.getElementById('name_input').value;
+            var storyHTML = localStorage.getItem(storyName);
+            document.getElementById('story_editor').value = storyHTML;
+        }
+        function saveStory(){
+            var storyName = document.getElementById('name_input').value;
+            var storyHTML = document.getElementById('story_editor').value;
+            localStorage.setItem(storyName, storyHTML);
+        }
+        function displayStory(){
+            var storyHTML = document.getElementById('story_editor').value;
+            document.getElementById('story_display').innerHTML = storyHTML;
+        }
+  
+    </script>
+
+    <style>
+        textarea {
+            width: 500px;
+            height: 150px;
+            background-color: lightyellow;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 class="application-title">Story Recorder & Editor - Local Storage</h1>
+ 
+    <main>
+        <div class="child-container">
+
+            Story Name:<input id=name_input></input>
+    
+            <section>
+                <button onclick="loadStory()">Find and Edit It</button>
+                <button onclick="saveStory()">Save It</button>
+                <button onclick="displayStory()">Display It</button>
+            </section>
+        
+            <textarea id="story_editor" placeholder="Write a totally awesome story here."></textarea>
+            <section id="story_display"></section>
+    
+        </div>
+    </main>
+   
+   
+    
+</body>
+</html>

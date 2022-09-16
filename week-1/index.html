@@ -27,19 +27,67 @@
         <div class="child-container">
 
             <ol class="center-projects">
-                <li><a href="">Local Storage Project</a></li>
+                <li id="working-example"><a href="localStorageStoryEditorApp.html">Local Storage Application</a></li>
             </ol>
 
             <article>
                 <h2>Local Storage</h2>
                 <p>
-                    This is amazing!
+                    Local storage in JS applications is used in remembering the user’s information or 
+                    to keep track of the changes that a user makes to a JS web page so that these 
+                    changes can be there again when the user access the web app again after the app 
+                    has been closed or stopped.Usually when an application has been stopped
+                    all that it was working on is gone without being stored unless if the 
+                    application has mechanism in place to save all the changes it has been.
                 </p>
 
+                <h4><em>Storing user data</em></h4>
+                <p>
+                    With JS applications there is an inbuilt object called localstorage that is used
+                    to store user data without having to connect to databases such as mongo database
+                    or relational databases. All the data is stored by localStorage object and is
+                     attached to the browser that was used by the user when inserting or changing
+                    data on the JS application. 
+                </p>
+                <p>
+                    With this mechanism in place, a user may access the JS application any 
+                    other time even after closing the browser and he will find the data and
+                    changes he made just like they were before closing the application.<br>
 
+                    The localStorage object has 2 main methods that it uses to store JS app
+                    data and to also retrieve the data.<br><br>
+                    -- setItem() method is used to store user data locally.<br>
+                    -- getItem() method is used to retrieve the data stored in the JS local storage.
+                </p>
+                <p>
+                    <b>NOTE:</b> The setItem accepts two arguments (a pair), the key
+                     (first argument) and the corresponding value (second argument). 
+                     You use the key to get access to the value that needs to be 
+                     used/displayed.<br><br>
+
+                     <b>Example of storing user data using LocalStorage object</b><br>
+                     localStorage.setItem(storyName, storyHTML);<br><br>
+
+                     <b>Example of accessing and displaying user data using LocalStorage object</b><br>
+                     var storyHTML = localStorage.getItem(storyName);<br>
+                     console.log(storyHTML)
+                </p>
+
+                <div>
+                    <h5>Question</h5>
+                    <p>
+                       Does the local storage keep user data even after the users browers'
+                       has been cleared of all browsing data.
+                    </p>
+                </div>
+                
+
+                <p><a href="localStorageStoryEditorApp.html">Click Here to interact with a LocalStorage Application</a></p>
+            
             </article>
             
-        </div>  
+        </div> 
+
     </main>
     
     

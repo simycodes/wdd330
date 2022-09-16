@@ -34,7 +34,8 @@ main div {
 }
 
 .child-container {
-    width:900px;
+    width:850px;
+    margin-bottom: 3rem;
 }
 
 main p {
