@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <script>
+
+        //USING FUNCTIONS
+        function howdy(){
+            return 'Howdy World!';
+        }
+        const message = howdy();
+        console.log(message);
+        //<< 'Howdy World!'
+
+        //USING rest operator ...<argument> TO MAKE A FUNCTION ACCEPT ANY NUMBER OF ARGUMENTS
+        function mean(...values) {
+            let total = 0;
+            for(const value of values) {
+                total += value;
+            }
+            return total/values.length;
+        }
+
+        console.log(mean(2,8,13,11,4,2));
+        console.log(mean(2,8,13));
+        console.log(mean(2,8));
+
+        //DEFAULT PARAMETERS
+        //Default parameters should always come after non-default parameters, 
+        //otherwise default values will always have to be entered anyway. 
+        function discount(price, amount=10) {
+            return price*(100-amount)/100;
+        }
+
+
+        //CALL BACK FUNCTIONS
+        //this is the defined call back function
+        function sing(song, dance) {
+            console.log(`I'm singing along to ${song}.`);
+            dance();
+        }
+
+        function dance() {
+           console.log("I'm moving my body to the groove."); 
+        }
+
+        console.log(sing('Let It Go', dance));
+
+       //arrow/anonymous function as callback function
+       sing('Let It Go',()=>{ 
+        console.log("I'm standing on my head.");
+       });
+
+
+       //SORTING NUMBERS IN ORDER IN JS USING A CALLBACK FUNCTION
+       function numerically(a,b){
+            return a-b;
+       }
+ 
+       //for very large numbers,to remove another error that JS makes
+       function numerically2 (a,b) {
+            if (a < b) {
+                return -1;
+            } else if (a> b) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+       const numbers =[1,3,12,5,23,18,7];
+       console.log(numbers.sort(numerically));
+       console.log(numbers.sort(numerically2));
+
+        
+
+    
+
+
+
+
+
+
+
+    </script>
+
+    <style>
+       
+
+    </style>
+
+</head>
+<body>
+    <h1 class="application-title">A JS Functions Program</h1>
+ 
+    <main>
+        <div class="child-container">
+           <h2>JS Functions.Use JS file & Console to see output</h2>
+           <p>
+              The program implements the use of functions
+           </p>
+        
+        </div>
+    </main>
+   
+   
+    
+</body>
+</html>

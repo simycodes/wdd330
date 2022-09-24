@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Recorder & Editor (Local Storage - Remembering User Info)</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <script>
+
+        //TYPES OF VARIABLES
+        console.log(typeof 'hello');
+        //<< 'String'
+        console.log(typeof 10);
+        //<< 'number'
+
+        console.log(typeof true);
+        //<< 'boolean'
+
+        console.log(typeof { ninja: 'turtle' })
+        //<< 'object'
+
+        console.log(typeof [ 1, 2, 3 ]);
+        //<< 'object' -its array (All non-primitive data types return a type of 'object'.)
+
+        //OBJECT MUTATING. This means the underlying data inside the object can change
+        const name = { value: 'Alexa' }; // an object
+        name.value = 'Siri'; // change the value
+        console.log(name.value)
+        //<< 'Siri'
+
+        //GLOBAL AND LOCAL SCOPE
+        const a = 1;
+
+        { const a = 3; a; 
+           console.log(a);
+           //<< 3
+        }
+        console.log(a);
+        //<< 1
+
+        //TEMPLATE LITERALS
+        const said = `She said, "It's Me!"`
+        console.log(said);
+
+        const name2 = `Simy`;
+        console.log(`Hello ${ name2 }!`);
+        //<< 'Hello Siri!'
+
+        const age = 39;
+        console.log(`I will be ${ age + 1 } next year`);
+        //<< 'I will be 40 next year'
+
+        //SYMBOL DATA TYPE
+        const uniqueID = Symbol('this is a unique ID');
+        console.log(uniqueID);
+        //<< Symbol(this is a unique ID)
+        //The main use-case for symbols is as object property keys
+        //The uniqueness of symbols, mean that it’s impossible for the names of any 
+        //properties to clash with each other if they are symbols.
+
+        //INCREMENTING VALUES
+        let points = 5;
+        let points2 = 5;
+        points++;
+        ++points2;
+        console.log(points);
+        console.log(points2);
+
+        //CONVERTING BETWEEN STRINGS AND NUMBERS
+        console.log(Number('23'));
+        console.log(Number('hello'));
+        //<<< NaN
+        console.log(String(3));
+        //<< '3'
+        console.log(10..toString());
+
+        //PARSING STRINGS TO NUMBERS
+        console.log(parseInt('23',10)); //convert the string '2.9' to 2.9 in base 10
+        console.log(parseInt('23')); //second argument can be left out
+        console.log(parseInt('1010',2)); // converts from binary, back to decimal
+        console.log(parseFloat('2.9',10));
+        
+        const address = '221B Baker Street';
+        console.log(parseInt(address, 10)); //string values baker...will be ignored/eliminated
+
+        //NULL  AND UNDEFINED
+        10 + null; // null behaves like zero
+        //<< 10
+
+        10 + undefined; // undefined is not a number
+        //<< NaN
+        
+
+  
+    </script>
+
+    <style>
+       
+
+    </style>
+
+</head>
+<body>
+    <h1 class="application-title">A JS Variables Program</h1>
+ 
+    <main>
+        <div class="child-container">
+           <h2>JS Variables.Use JS file & Console to see output</h2>
+           <p>
+            The program implements the use of typeof(),variables,scope,
+            Template literals,symbol datatype,string and number conversions.
+           </p>
+        
+    
+        </div>
+    </main>
+   
+   
+    
+</body>
+</html>

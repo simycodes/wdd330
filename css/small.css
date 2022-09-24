@@ -64,8 +64,18 @@ main div {
     text-decoration: underline;
 }
 
-article h2 {
+section h2 {
+    font-size: 1.8rem;
     text-decoration: underline;
+    font-style: italic;
+}
+
+section h3 {
+    font-size:1.2rem;
+}
+
+h4 {
+    margin-left: 1.5rem;
 }
 
 ol li {

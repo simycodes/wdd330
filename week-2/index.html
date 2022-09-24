@@ -22,11 +22,381 @@
 
 </head>
 <body>
-    <main>
-        <h1 class="notes-heading">See you next week!</h1>
-        
-    </main>
+
+        <main>
+            <h1 class="notes-heading">Week 2 Notes</h1>
+            <div class="child-container">
     
+                <ol class="center-projects">
+                    <li><a href="jsVariables.html">JS Variables Program</a></li>
+                    <li><a href="arrays.html">Click Here to interact with JS Arrays,Maps and Sets</a></li>
+                    <li><a href="functions.html">Click Here to interact with JS Functions</a></li>
+                    <li><a href="array-functions.html">Click Here to interact with Array methods and callbacks</a></li>
+                    <li><a href="../quiz-ninja-project/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+                </ol>
     
+                <section>
+                    <h2>Programming Basics, Arrays, Functions, Objects (N2N-Chapters 2 - 5)</h2>
+                    
+                    <article>
+                       <h3><em>JS Variables</em></h3>
+                       <p>
+                        <b>Primitives</b><br>
+                        string,
+                        number,
+                        boolean,
+                        null,
+                        symbol (ES6),
+                        undefined<br>
+                        <b>Objects</b><br>
+                          object literals,
+                          Arrays,
+                          Functions,
+                          Classes,
+                          basically everything that is not a primitive!
+                       </p>
+
+                       <h3>const and let</h3>
+                       <p>
+                          The keyword const is used when the variable will not be reassigned to another value, whereas let is used if the variable might be reassigned later in the program.
+                          <b>Variables have to be declared before they can be used.</b>
+                       </p>
+                       <p>
+                          If the variable references a non-primitive data type, such as an array, function or
+                          object, then using const will not make it immutable. This means the underlying data
+                          inside the object can change (known as mutating the object).<br>
+                          Even if you use const to declare a variable, non-primitive data types can still be mutated later in the program.<br>
+                          Check Example in the JS variables program attached.
+                       </p>
+                    </article>
+
+                    <article>
+                        <h3><em>Variable Scope</em></h3>
+                        <p>
+                          Using const and let to declare variables means they are block 
+                          scoped, so their value only exists inside the block they are 
+                          declared in.
+                        </p>
+
+                        <h4>Global Scope</h4>
+                        <p>
+                          Any variable declared outside of a block is said to have global scope. 
+                          This means it is accessible everywhere in the program. 
+                          While this may seem to be a good idea at first, it is not considered good practice.
+                          <br>
+                          A variable having a global scope means its available inside and outside the other lower
+                          level scopes,but local variables in these scopes have a higher precedence than the
+                          global variables.<br>
+                          Defining a variable in a scope without using let or const makes that variable global
+                          and can be accessed anywhere. { a = 10 }
+                        </p>
+                        
+                        <h4>Local Scope</h4>
+                        <p>
+                           Blocks '{ --this space here-- }' can be used to create a local scope. 
+                           This means that any variables defined inside a block using the let or 
+                           const will only be available inside that block and not be accessible outside of that bloc
+                           <br>
+                           If let or const are not used, the variable will have global scope and be available outside the block. 
+                        </p>
+                     </article>
+
+                     <article>
+                        <h3><em>Template Literals</em></h3>
+                        <p> 
+                          Template Literals allows the use both types of quote mark within the string
+                          and interpolation of JavaScript code. This means that a JavaScript 
+                          expression can be inserted inside a string and the result will be displayed.<br>
+                         <b>`She said, "It's Me!"`</b><br>
+                         <b>const age = 39;<br>
+                          `I will be ${ age + 1 } next year`;
+                         </b>
+                        </p>
+                     </article>
+
+                     <article>
+                        <h3><em>JS Reserved Words</em></h3>
+                        <p>
+                          The following words are reserved for use by the JavaScript language and cannot be 
+                          used to name variables (or function parameters and object properties 
+                          that appear in later chapters):<br><br>
+                          abstract, await, boolean, break, byte, case, catch, char, class, const, continue, debugger, default, delete, do, double, else, enum, export, extends, false, final, finally, float, for, function, goto, if, implements, import, in instanceof, int, interface, let, long, native, new, null, package, private, protected, public, return, short, static, super, switch, synchronized, this, throw, throws, transient, true, try, typeof, var, volatile, void, while, with, yield
+                          <br>
+                          These words are reserved because many of them are used by the language itself.
+                        </p>
+                      </article>
+
+                     <article>
+                        <h3><em>Converting Between Strings and Numbers </em></h3>
+                        <p>
+                          <b>Converting Strings to Numbers</b>
+                          The best way to change a string to a number is to use the Number() method. <br>
+
+                          <b>Converting Numbers to Strings</b>
+                          The preferred way of changing a number to a string is to use the String() function.
+                        </p>
+                        <p>
+                          <b>Parsing Numbers</b>
+                          There is also a useful function called parseInt() that can be used to convert a string representation of a numerical value back into a number.
+                          You can specify the base of the number you are trying to convert.<br>
+                          There is also a similar function called parseFloat() that converts strings into floating point decimal numbers:
+                         
+                        </p>
+                     </article>
+
+                     <article>
+                        <h3><em>Arrays</em></h3>
+                        <p>
+                           <b>Arrays, sets, and maps are data structures used in JavaScript to store lists of values. </b>
+                           The main array methods include Pop, Push, Shift, and Unshift
+                        </p>
+                        <h4>Deleting an array item</h4>
+                        <p>
+                           The delete operator will remove an item from an array<br>
+                           <b>delete avengers[3];</b><br>
+                           <em>
+                              The value that was in position 3 has will be deleted from the array,
+                              but the space that it occupied will still there and contain a value of
+                              undefined. <br>
+                              This means the array still has the same number of elements, and the
+                              position can still be referenced as an index, but it will just return 
+                              undefined:<br>
+                              To complete;y delete the item and its position use array methods such as pop and
+                              shift.
+                           </em>
+                        </p>
+
+                        <h4>Destructuring Arrays</h4>
+                        <p>
+                           Destructuring an array is the concept of taking values out of an
+                           array and presenting them as individual values.<br>
+                           Destructuring allows us to assign multiple values at the same 
+                           time, using arrays:<br>
+                           <b>const [x, y] = [1, 2];<br>x = 1 and y = 2 outside the array</b>
+                        </p>
+
+                        <h3>Maps</h3>
+                        <p>
+                           They are a convenient way of keeping a list of key and value pairs, and are similar 
+                           to 'hashes', or 'hash tables' or 'dictionaries' in other programming languages.<br>
+                           The set() method is be used to add a key and value pair to a map. The first value
+                           is the key and the second is the value:<br>
+
+                           <b>romanNumerals.set(1,'I');</b><br>
+
+                           A map is a bit like a dictionary where you can look up a value based on the key. 
+                           To look up a value, we can use the get() method:<br>
+                           romanNumerals.get(4); //'IV'
+                        </p>
+
+                        <h3>for-of Loop</h3>
+                        <p>
+                           for-of LOOP,replaces the use of usual for loop to loop through an array<br><br>
+                           let avengers2 = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow'];
+                           <br><br>
+                           for(const value of avengers2){
+                              console.log(value);
+                            }
+                            <br>
+                            Note that the variable --value-- needs to be declared using const.<br>
+                            The for-of loop can also be used to loop through sets and maps
+                        </p>  
+                     </article>
+
+                     <article>
+                        <h3><em>Functions</em></h3>
+
+                        <h4>Function Expressions</h4>
+                        <p>
+                           Functions created by assigning an anonymous function to a variable.<br>
+                           <pre>
+                              const goodbye = function(){
+                                 console.log('Goodbye World!');
+                              };
+                           </pre>
+                         </p>
+
+                         <h4>Difference Between Parameters and Arguments</h4>
+                         <p>
+                            Parameters and arguments are terms that are often used interchangeably to 
+                            represent values provided for the function as an input.<br>
+                            There is a subtle difference though: any parameters a function needs are set when 
+                            the function is defined. When a function is invoked, it is provided with arguments.
+                         </p>
+
+                         <p>
+                           If a parameter is not provided as an argument when the function is invoked, the 
+                           function will still be invoked, but the parameter will be given a value of undefined.<br>
+                           The function returns NaN because the function cannot do the required operation with undefined. 
+                         </p>
+
+                         <p>
+                           If too many arguments are provided when a function is invoked, the function will work
+                            as normal and the extra arguments will be ignored.
+                         </p>
+
+                         <h4>Functions that accept any number of arguments</h4>
+                         <p>
+                           The rest operator ...--argument-- can be used to make a function accept any number of
+                           arguments that it is given
+
+                           <pre>
+                              function mean(...values) {
+                                 let total = 0;
+                                 for(const value of values) {
+                                     total += value;
+                                 }
+                                 return total/values.length;
+                             }
+
+                              mean(2,8,13); // 7.6666...
+                              mean(2,8);  // 5
+                           </pre>
+                         </p>
+
+                         <h4>Arrow Functions</h4>
+                         <p>
+                           If the main body of the function fits onto one line, so there is no need to put
+                           it inside a block or explicitly use the return keyword.
+                           <pre>
+                              const add = (x,y) => x + y;
+
+                              const hello = () => alert('Hello World!');
+
+                              const tax = (salary) => {
+                                 const taxable = salary - 8000;
+                                 const lowerRate = 0.25 * taxable;
+                                 taxable = taxable - 20000;
+                                 const higherRate = 0.4 * taxable;
+                                 return lowerRate + higherRate;
+                             }
+                           </pre>
+                         </p>
+                         <p>
+                           <b>Hoisting</b> is the JavaScript interpreter’s action of moving all variable and 
+                           function declarations to the top of the current scope, regardless of where they 
+                           are defined.<br>
+                           With hoisting, function definitions can be placed together, possibly at the 
+                           end of a program, rather than having to define every function before it is used.
+                         </p>
+
+                         <h3>A Callback Function</h3>
+                         <p>
+                            A function that is passed as an argument to another is known as a callback.
+                            Functions can be used as arguments because they are first class objects that
+                            behave like any other JS object.
+                            <pre>
+                              function sing(song,callback) {
+                                  console.log(`I'm singing along to ${song}.`);
+                                  callback();
+                              }
+                            </pre>
+                         </p>
+                         <p>
+                           The callback is provided as a parameter, then invoked inside the body of the function.<br>
+                           Note that the callback dance is passed as an argument without parentheses. 
+                           This is because the argument is only a reference to the function. 
+                           The actual callback is invoked in the body of the function, where parentheses are used.
+                         </p>
+
+                         <h3>Callback Arrow function/anonymous function</h3>
+                         <p>
+                           This is the most common way in which call back functions are used
+                         </p>
+
+                         <pre>
+                           function sing(song) {
+                              console.log(`I'm singing along to ${song}.`);
+                           }
+
+                           //linking a callback function to a function call
+                           sing('Let It Go',()=>{ 
+                              console.log("I'm standing on my head.");
+                           });
+
+                         </pre>
+
+                         <h3>Sorting Numbers in JS Functions</h3>
+                         <p>
+                           Numbers in JS are sorted alphabetically.Hence to sort them
+                           correctly, the following callback functions are used.
+                         </p>
+
+                         <pre>
+                           function numerically(a,b){
+                              return a-b;
+                           }
+
+                           //for very large numbers,to remove another error that JS makes
+                           function numerically2 (a,b) {
+                              if (a < b) {
+                                 return -1;
+                              } else if (a> b) {
+                                 return 1;
+                              } else {
+                                 return 0;
+                              }
+                            }
+
+                            //Calling the functions
+                            const numbers =[1,3,12,5,23,18,7];
+                            console.log(numbers.sort(numerically));
+                            console.log(numbers.sort(numerically2));
+                         </pre>
+
+                          <article>
+                            <h3><em>Array methods that make use of callback functions</em></h3>
+                            <p>
+                              Array methods make use of certain callback functions in order to simply
+                              the working processes such as looping through an array and displaying its
+                              items.<br>
+                              These methods that make use of callbacks include the forEach(),map()
+                            </p>
+                        
+                            <p>
+                    
+                            </p>
+
+                        </article>  
+                     </article>
+
+                     
+ 
+
+                    
+                    <div>
+                        <h4>Questions</h4>
+
+                        <article>
+                            <h4><em>1.Incrementing Values </em></h4>
+                            <p>
+                               Whats the difference between points++ and ++points in reference to the
+                               example below
+                            </p>
+                        
+                            <p>
+                               let points = 5;<br>
+                               points++; // will return 6, then increase points to 7<br>
+                                
+                               ++points; // will increase points to 8, then return it
+                            </p>
+
+                        </article>
+                        
+                    </div>
+                    
+                    <p><a href="jsVariables.html">Click Here to interact with JS Variables</a></p>
+                    <p><a href="arrays.html">Click Here to interact with JS Arrays,Maps and Sets</a></p>
+                    <p><a href="functions.html">Click Here to interact with JS Functions</a></p>
+                    <p><a href="array-functions.html">Click Here to interact with Array methods and callbacks</a></p>
+                    <p><a href="../quiz-ninja-project/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                    <p><b>NOTE:</b> Resources used include N2N</p>
+                
+                </section>
+                
+            </div> 
+    
+        </main>
+      
 </body>
 </html>

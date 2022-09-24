@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <script>
+
+        //USING ARRAY FUNCTIONS AND CALLBACKS
+
+        //Implementing ForEach()
+        const colors = ['Red', 'Green', 'Blue']
+
+        //the first argument represents the value in the array, the second represents the 
+        //current index
+        colors.forEach( (color,index) => {
+           console.log(`Color at position ${index}  is ${color}`)
+        });
+    
+        //Implementing map() - maps creates a new array with new values.
+        //map() is used to process data returned from databases in array form, such as 
+        //adding HTML tags to plain text.
+        const numbers = [1,2,3];
+        const mappedNumbers = numbers.map((number)=>{
+            return number + 2;
+        });
+
+        console.log(mappedNumbers);
+
+        //An anonymous function can also be used as a callback. 
+        //This example will double all the numbers in the array:
+        const numbers2 = numbers.map( x => 2 * x);
+        console.log(numbers2);
+
+        let colors2 = ['red','green','blue'];
+        let colorsInHTML = colors2.map( (color) => { 
+            return `<p> ${color.toUpperCase()}</p>` 
+        });
+         //let colorsInHTML = colors2.map( color => `<p> ${color.toUpperCase()}</p>`);
+        console.log(colorsInHTML);
+        //<< ['<p>RED</p>', '<p>GREEN</p>', '<p>BLUE</p>']
+
+        //destructuring
+        let [a,b,c] = colorsInHTML;
+        console.log(a);
+        //document.getElementById("colors").appendChild(a); //*try implement solve errors
+
+    </script>
+
+    <style>
+       
+
+    </style>
+
+</head>
+<body>
+    <h1 class="application-title">A JS Functions Program</h1>
+ 
+    <main>
+        <div class="child-container">
+           <h2>JS Functions.Use JS file & Console to see output</h2>
+           <p>
+              The program implements array functions and callbacks
+           </p>
+
+        </div>
+    </main>
+   
+   
+    
+</body>
+</html>

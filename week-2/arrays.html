@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <script>
+
+       //DECLARING AN ARRAY
+       const heroes = [];  //preferred way - literal
+       const myArray = new Array(); //using the array constructor
+
+       //INITIALISING ARRAYS
+       heroes[0] = 'Batman';
+       const avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk'];
+
+       //DELETING AN ARRAY ITEM
+       delete avengers[3];
+       console.log(avengers);
+       //<< ['Captain America', 'Iron Man', 'Thor', undefined]
+
+       //DESTRUCTURING ARRAYS
+       const [x,y] = [1,2];
+       console.log(x);
+       console.log(y);
+
+       //ARRAY METHODS
+       let avengers2 = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow'];
+       console.log(avengers.length);
+       avengers[avengers.length - 1]; //print last element in the array
+       avengers.pop(); //remove last element - removes the allocated memory in array also
+       avengers.shift(); //remove the first element
+       avengers.push('Thor'); //add an element at the end of an array
+       avengers.unshift('Captain America'); //add element at beginning of an array
+
+       //MERGING ARRAYS 
+       avengers2 = avengers2.concat(['Hulk','Hawkeye', 'Black Widow']);
+       console.log(avengers2);
+       console.log(avengers.join()); //convert array into a spring separated by commas
+
+       //SPREAD OPERATOR -3 dots ...
+       //The spread operator is three dots, ... that are placed in front of an array, 
+       //with the effect of spreading out the elements of that array. This can be used to
+       // spread the elements of two arrays and put them together in a new array, like so:
+       let avengers3 = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow'];
+       avengers3 = [ ...avengers3, ...['Hulk','Hawkeye', 'Black Widow'] ];
+       console.log(`Concatenating arrays using the spread operator(...) ${avengers3}`);
+
+       //SPLICE METHOD - REPLACING ARRAY ITEMS
+       var arr1 = ['a','b','c','d','e','f',,,'i'];
+       var arr2 = arr1.splice(6,2,'g','h');
+       console.log(arr1); // length:9, 0:a, 1:b, 2:c, 3:d, 4:e, 5:f, 6:g, 7:h, 8:i
+       console.log(arr2); // length:2
+
+       //NOTE: NUMBERS ARE SORTED ALPHABETICALLY IN JS
+       [5, 9, 10].sort();
+      //<< [10, 5, 9]
+
+      //USING SETS
+      const list = new Set(); //Declaring a set
+      console.log(list.add(1));
+
+      const setNumbers = new Set([1,2,3]);
+      console.log(setNumbers);
+
+      //SET METHODS
+      const jla = new Set().add('Superman').add('Batman').add('Wonder Woman');
+      console.log(jla);
+      //<< Set { 'Superman', 'Batman', 'Wonder Woman' }
+      jla.size;
+      //<< 3
+      console.log(jla.has('Superman'));
+      console.log(jla.delete('Superman'));
+      console.log(jla.clear()); //removes all elements in a set
+
+      //SETS TO ARRAYS
+      const shoppingSet = new Set().add('Apples').add('Bananas').add('Beans');
+      console.log(shoppingSet)
+      //<< Set { 'Apples', 'Bananas', 'Beans' }
+
+      const shoppingArray = [...shoppingSet]; //converting to array
+      console.log(shoppingArray);
+      //<< [ 'Apples', 'Bananas', 'Beans' ]
+
+      //USING MAPS
+      const romanNumerals = new Map();
+      romanNumerals.set(1,'I');
+      romanNumerals.set(2,'II').set(3,'III').set(4,'IV').set(5,'V');
+      //<< Map { 1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V' }
+
+      const heroes2 = new Map([ ['Clark Kent','Superman'],['Bruce Wayne', 'Batman']]);
+
+      //MAP METHODS
+      console.log(romanNumerals.get(4));
+      //<< 'IV'
+      console.log(romanNumerals.has(5));
+
+      console.log(heroes2.size);
+      //<< 2
+      console.log(heroes2.delete('Clark Kent'));
+      heroes2.clear(); //remove all key pair values in the map
+
+      const romanNumeralsConvertedInArray = [...romanNumerals]; //converting to array
+      console.log(romanNumeralsConvertedInArray);
+
+      //for-of LOOP
+      //This replaces the use of usual for loop to loop through an array
+      //Note that the variable --value-- needs to be declared using const.
+      //the for-of loop can also be used to loop through sets and maps
+      for(const value of avengers2){
+        console.log(value);
+      }
+
+      //LOOPING THROUGH MAPS
+      romanNumerals2 = new Map();
+      romanNumerals2.set(2,'II').set(3,'III').set(4,'IV').set(5,'V');
+      for(const key of romanNumerals2.keys()) {
+          console.log(key);
+      }
+
+      for(const value of romanNumerals2.values()) {
+          console.log(value);
+      }
+
+      for(const [key,value] of romanNumerals2.entries()) {
+         console.log(`${key} in Roman numerals is ${value}`);
+      }
+
+    </script>
+
+    <style>
+       
+
+    </style>
+
+</head>
+<body>
+    <h1 class="application-title">A JS Array Program</h1>
+ 
+    <main>
+        <div class="child-container">
+           <h2>JS Variables.Use JS file & Console to see output</h2>
+           <p>
+            The program implements the use of arrays, array methods, sets and sets methods
+           </p>
+        
+    
+        </div>
+    </main>
+   
+   
+    
+</body>
+</html>
