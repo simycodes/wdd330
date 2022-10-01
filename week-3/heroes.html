@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Dom Program - Justice League</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>Justice League</h1>
+    </header>
+
+    <main>
+        <div class="child-container">
+           <h2>DOM.Use JS file & Console to see output</h2>
+           <p>
+            The program implements DOM.
+           </p>
+
+            <ul id='roster'>
+                <li class='hero'>Superman</li>
+                <li class='vigilante hero' id='bats'>Batman</li>
+                <li class='hero'>Wonder Woman</li>
+            </ul>
+
+            <ul id='roster2'>
+                <li class='hero2'>Superman</li>
+                <li class='vigilante hero2' id='bats2'>Batman</li>
+                <li class='hero2'>Wonder Woman</li>
+            </ul>
+        </div>
+    </main>
+
+</body>
+
+<script>
+    //GET ELEMENTS METHODS
+
+    //1.Getting An Element By Its ID - returns a reference to the element with a unique 
+    //id attribute that is given as an argument
+    const h1 = document.getElementById('title');
+    console.log(h1);
+
+
+    //2.Get Elements By Their Tag Name - return a live node list of all the elements with
+    // the tag name that is provided as an argument.
+    const listItems = document.getElementsByTagName('li');
+
+    console.log(listItems[0]); //<< <li class='hero'>Superman</li>
+    console.log(listItems[1]);
+    console.log(listItems[2]);
+    console.log(listItems);
+
+
+    //3.Get Elements By Their Class Name - return a live node list of all elements that have 
+    //the class name that is supplied as an argument
+    const heroes = document.getElementsByClassName('hero');
+    console.log(heroes.length); //3
+
+    //4.querySelector() - method allows you to use CSS notation to find the
+    // first element in the document that matches that matches a CSS selector provided
+    // as an argument.
+    const batman = document.querySelector('#bats'); //same as getElementById()
+    console.log(batman); //<li class="vigilante hero" id="bats">Batman</li>
+
+    //5.The document.querySelectorAll() method also uses CSS notation but returns a 
+    //node list of all the elements in the document that match the CSS query selector. 
+
+    const allHeroes = document.querySelectorAll('.hero');  //same as getElementsByClassName
+    console.log(allHeroes) 
+    //<< NodeList [<li class="hero">, <li id="bats">, <li class="hero">]
+
+    //NOTE:query selectors have the benefit of being more specific in what to select
+    //This will return only the last list item in the document:
+    const wonderWoman = document.querySelector('li:last-child');
+    console.log(wonderWoman);
+
+    //NOTE:The querySelector() method can be called on any element, rather than
+    // just document.
+    const ul = document.querySelector('ul#roster');
+    console.log(ul);
+    const batman2 = ul.querySelector('li#bats'); //access through ul directly
+    console.log(batman2);
+
+    //DOM PROPERTIES
+
+    //1.The childNodes property is a list of all the nodes that are children of 
+    //the node concerned.
+    const heroes2 = document.getElementById('roster');
+    console.log(heroes2.childNodes); //the #text is the space above&bottom of superman/batman
+    // << NodeList [#text "
+    // ", <li class="hero">, #text "
+    // ", <li id="bats">, #text "
+    // ", <li class="hero">, #text "
+    // ", <li class="hero">, #text "
+
+
+    //2.The children property only returns any element nodes that are children of that node,
+    // so will ignore any text nodes. 
+    const heroes3 = document.getElementById('roster');
+    console.log(heroes3.children); // this will only contain list items
+    console.log(heroes3.children.length) //3
+
+    //firstChild property returns the first child of a node:
+    heroes.firstChild
+   //<< #text " "
+
+   //using firstChild property to get elements innerHTML
+   const batmaN = document.getElementById('bats'); 
+   const elementActualContent = batmaN.firstChild;
+   const exactContent = elementActualContent.nodeValue;
+   console.log(exactContent); //batman - same as using batmaN.textContent
+
+   //And the lastChild property returns the last child of a node:
+   heroes.lastChild
+   //<< #text " "
+
+   //parentNode,nextSibling,previousSibling node
+   //these methods find the next and previous node, not element, so they will often
+   // return a blank text node.
+   const wonderWoman2 = document.querySelector('ul#roster li:last-child');
+   console.log(wonderWoman2.parentNode); //<ul id='roster'>…</ul>
+
+   wonderWoman2.nextSibling
+   //<< #text " " //next bottom element
+
+   wonderWoman2.previousSibling
+   //<< #text " " //next top element
+
+   //Getting a nodes value
+   const heroes4 = document.getElementById('bats');
+   console.log(heroes4.textContent);
+   console.log(heroes4.innerHTML);
+
+
+   //GETTING AND SETTING ATTRIBUTES
+   //The getAttribute() method returns the value of the attribute provided as an argument:
+   //from the element in heroes4, get me the class name
+   const attribute = heroes4.getAttribute('class');
+   console.log(attribute); //vigilante hero
+
+
+   //The setAttribute can change the value of an element’s attributes. It takes two 
+   //arguments: the attribute that you wish to change, and the new value of that attribute.
+   heroes4.setAttribute('class','Greatest-Hero');
+   const newAttribute = heroes4.getAttribute('class');
+   console.log(newAttribute); //Greatest Hero
+
+   //If an element does not have an attribute, the setAttribute method can be used to
+   // add it to the element.If a given attribute exists and another is set,the new one
+   //replaces the old one,like Got-Money class is replacing Greatest-Hero class
+   heroes4.setAttribute('class','Got-Money');
+   const newAttribute2 = heroes4.getAttribute('class');
+   console.log(newAttribute2);
+
+   //classList and class Property
+   //The classList property is a list of all the classes an element has. 
+   //Its add method can be used to add a class to an element without overwriting any 
+   //classes that already exist.
+
+   heroes4.classList.add('warrior');
+   console.log(heroes4.className); //check all available classes of heroes4
+   console.log(heroes4.classList);
+
+   heroes4.classList.remove('warrior'); //remove a class from an element
+   console.log(heroes4.className);
+
+   //using the toggle() method
+   //The toggle method is a very useful method that will add a class if an element 
+   //does not have it already, and remove the class if it does have it. 
+   //It returns true if the class was added and false if it was removed.
+
+   heroes4.classList.toggle('hero'); // will add the 'hero' class
+   console.log(heroes4.className);
+
+   heroes4.classList.toggle('hero'); // will remove the 'hero' class
+   console.log(heroes4.className);
+
+   //CREATING DYNAMIC CONTENT USING THE DOM -elements and adding them to a webpage
+   const flash = document.createElement('li');
+   const flashText = document.createTextNode('Flash'); //creating some content for li/flash
+   flash.appendChild(flashText); //put flashText inside of flash
+
+   const welcomeMessage = document.createElement('p');
+   //using textContent to create content instead of using createTextNode process
+   welcomeMessage.textContent = "Hello! This is a dynamically created element having dynamically created content";
+  
+   //Function that creates elements dynamically
+   function createElement (tag,text) {
+        const el = document.createElement(tag);
+        el.textContent = text;
+        return el
+   }
+
+   //creating a new element using the function above
+   const aquaman = createElement('li','Aquaman');
+   console.log(aquaman);
+
+   //Adding dynamically created elements to the heroes element
+   heroes2.appendChild(flash);
+   heroes2.appendChild(aquaman);
+
+    //insertBefore()
+   //It takes two parameters: the first is the new node to be added, and the second is 
+   //the node that you want it to go before (it’s helpful to think that the order of 
+   //the parameters is the order they will appear in the markup
+   const spiderMan = createElement('li','spiderman');
+   heroes2.insertBefore(spiderMan,flash);
+
+   //Removing an element
+   heroes2.removeChild(aquaman); //console logs the deleted element
+
+   //Replacing elements
+   //The replaceChild() method can be used to replace one node with another.
+   // It’s called on the parent node and has two parameters: the new node and 
+   //the node that is to be replaced.
+
+   const h1Two = document.getElementById('title');
+   const oldText = h1Two.firstChild;
+   const newText = document.createTextNode('Justice League of America');
+   h1.replaceChild(newText,oldText);
+   //textContent can be used here because parameters must be of type 'Node'.
+
+   //All above code can be simplified as 
+   h1Two.innerHTML = 'Justice League';
+
+
+   //INNERHTML
+   console.log(heroes2.innerHTML);
+
+   //The power of the innerHTML property becomes even more apparent if you want to 
+   //insert a large amount of HTML into the document. Instead of creating each element
+   //and text node individually, you can simply enter the raw HTML as a string. 
+   const superHeroes = document.getElementById('roster2');
+   console.log(superHeroes);
+
+   superHeroes.innerHTML = '<li id="1">Harley Quinn</li> <li>Deadshot</li> <li>Killer Croc</li><li class="hello">Enchantress</li> <li>Captain Boomerang</li> <li>Katana</li> <li>Slipknot</li>';
+   console.log(superHeroes);
+
+   //USING DOM TO CHANGE CSS FOR HTML ELEMENTS
+   const superman = heroes2.children[0];
+   superman.style.border = "red 2px solid"; //using classList.add() is preferred or external css
+
+   //Hiding and displaying an element
+   //superman.style.display = 'none';
+   //superman.style.display = 'block';
+
+    //Document.body returns the body element of a web page.
+    //Document.images returns a node list of all the images contained in the document.
+
+</script>
+
+</html>

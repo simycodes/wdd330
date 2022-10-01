@@ -7,8 +7,13 @@ const links = [
     {
       label: "Week-2 notes",
       url: "week-2/index.html"
+    },
+     {
+      label: "Week-3 notes",
+      url: "week-3/index.html"
     }
 ]
+
 
 function loadIndex() {
   const ol = document.querySelector('#linkslist');

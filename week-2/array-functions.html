@@ -32,6 +32,13 @@
         colors.forEach( (color,index) => {
            console.log(`Color at position ${index}  is ${color}`)
         });
+
+        //Implementing for-of loop
+        //for-of LOOP,replaces the use of usual for loop to loop through an array
+        //Note that the variable --value-- needs to be declared using const.
+        for(const color of colors){
+            console.log(color);
+        }
     
         //Implementing map() - maps creates a new array with new values.
         //map() is used to process data returned from databases in array form, such as 

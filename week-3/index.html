@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wdd330 Week-1 Notes</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <main>
+        <h1 class="notes-heading">Week 3 Notes</h1>
+        <div class="child-container">
+
+            <ol class="center-projects">
+                <li><a href="objects.html">Interact with Objects</a></li>
+                <li><a href="index-START-mine.html">Real Life Practical use of array methods and objects program</a></li>
+                <li><a href="eventListeners.html">Interact with Basics of Event Listeners</a></li>
+                <li><a href="heroes.html">Interact with Heroes Program - A DOM Project</a></li>
+                <li><a href="events.html">Interact with Event Listeners Program</a></li>
+                <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+            </ol>
+
+                <!-- Beginning of a main topic -->
+            <section>
+                <h2>Objects, Document Object Model(DOM),</h2>
+
+                <!-- sub topic goes here -->
+                <article>
+                    <h3><em>Using objects</em></h3>
+                    <p>
+                     Objects are usually created to represent entities of the real world, like users and orders.<br>
+                     <b>An object in JavaScript is a self-contained set of related values and functions.</b>
+                     Objects are often used to keep any related information and functionality together in the same place.
+                    </p>
+
+                    <p>
+                     In JS there are six primitive data types (strings, numbers, booleans, symbols, undefined, and null) 
+                     and the rest are referred to as objects.<br>
+                     These include arrays (inbuilt object), functions, object literals
+                    </p>
+
+                    <h4>Object  Literals/Objects</h4>
+                    <p>
+                      <b>
+                        Object literals/Objects are a distinguishing feature of the JavaScript language, 
+                        as they allow objects to be created quickly without the need for defining a class.
+                        Objects can inherit properties from other objects.
+                     </b>
+
+                     <pre>
+                        Example of an Object
+
+                        const superman = {
+                            name: 'Superman',
+                            realName: 'Clark Kent',
+                            height: 75,
+                            weight: 235,
+                            hero: true,
+                            villain: false,
+                            allies: ['Batman','Supergirl','Superboy'],
+                            fly() {
+                                return 'Up, up and away!';
+                            }
+                        };
+                     </pre>
+                    </p>
+
+                    <p>
+                        Objects are accessed using the Dot notation(more common) and bracket notation.
+                    </p>
+
+                    <h3> </h3>
+
+                    <p>
+                        Objects are assigned by
+                         reference. This means that if a variable is assigned to an object that already 
+                         exists, it will simply point to the exact same space in memory. So any changes
+                          made using either reference will affect the same object.
+                    </p>
+
+                    <pre>
+                        const fruit = { 
+                            name: 'Banana' 
+                        };
+
+                        const smallFruit = fruit;
+
+                        fruit and smallFruit are basically the same.Changing the name 
+                        property (Banana) of fruit to Apple will make the name property
+                        of smallFruit to become Apple as well.Same will occur if changes
+                        are made in smallFruit.
+                    </pre>
+
+                    <h4>Using for-in loop to Loop through Object</h4>
+                    <p>
+                        A for-in loop is used to carefully loop through the properties of an
+                        object
+                        <pre>
+                            for(const propertyName in superman) {
+                                console.log(propertyName + ": " + superman[propertyName]);
+                            }
+
+                            result
+
+                            << "name: Superman"
+                            << "real name: Clark Kent"
+                            << "height: 75"
+                            << "weight: 235"
+                            << "hero: true"
+                            << "villain: false"
+                            << "allies: Batman,Supergirl,Superboy"
+                            << "fly: function (){
+                                console.log(\"Up, up and away!\");
+                        </pre>
+                    </p>
+
+                    <h4>Converting from Objects to JSON</h4>
+
+                    <p>
+                        Objects can be converted to JSON using the stringify() method of the
+                        JSON inbuilt object.<br><br>
+
+                        JSON.stringify(superman);
+                    </p>
+
+                    <p>
+                        JSON files can also be converted to Objects using the parse() method.
+                    </p>
+
+                    <p>
+                        JSON is used to sending data to, and receiving data from, a web server using Ajax requests
+                        and when using localStorage to store data on a users machine.
+                    </p>
+
+
+                </article>
+                
+                <!-- sub topic goes here -->
+                <article>
+                    <h3><em>The Date object </em></h3>
+                    <p>
+                      <b>Date objects contain information about dates and times.</b>
+                      A constructor function is used to create a new date object using the new operator<br><br>
+                      const today = new Date();
+                    </p>
+                </article>
+
+                <article>
+                    <h3><em>The RegExp Object</em></h3>
+                    <p>
+                        A regular expression(RegExp) is a pattern that can 
+                        be used to search strings for matches to the pattern.
+                    </p>
+                    <p>
+                        For example, say you were looking for any word ending in 'ing', 
+                        you could use the regular expression /[a-zA-Z]+ing$/.
+                    </p>
+                    <p>
+                        Regex can be written by placing the regular expression between forward slashes.<br>
+                        / / and [a-zA-Z]+ing$ = /[a-zA-Z]+ing$/<br><br>
+
+                        The dash represents a sequence of characters
+
+                        Bring up anything that ends in +ing whether in lower (a-z) cases or
+                        upper (A-Z)  cases
+                    </p>
+                    <p>
+                       A RegExp can be as basic as const pattern = /JavaScript/;
+
+<pre>
+Understanding Complex RegEx
+
+pattern2 = /[Jj][aeiou]v[aeiou]/;
+
+-This means,first letter of word to be tested must be either J or j
+-the second letter must be a vowel,either a, e, i, o, u
+-the third letter must be strictly a lower case v
+-The fourth letter must be a vowel,either a, e, i, o, u
+
+pattern.test('JavaScript');
+=true
+
+pattern.test('jive');
+=true
+
+pattern.test('hello');
+=false
+
+console.log(pattern.test('Ajvakva'));
+-false --The word to be tested must follow the order and position of placement
+-as defined in the pattern having all stated characters at different positions is
+-not enough
+
+
+2.following regular expression will match anything that starts with J followed by one
+or more vowels, then any letters or numbers ending in ing:
+
+    pattern = /^J[aeiou]+\w+ing$/
+
+\w  is equivalent to [A-Za-z0-9_] -Special Characters
+\d is equivalent to [0-9]
+\s is equivalent to [ \t\r\n\f] -match any whitespace character
+^ is a modifier marks the position immediately before the first character in the string
+
+3.The following looks for zero or more occurrences of any character, followed by an
+escaped period, followed by the letters " pdf " that must come at the end of the string:
+
+const pdf = /.*\.pdf$/;
+
+pdf.test('chapter5.pdf');
+=true
+
+pdf.test('report.doc');
+=false
+
+Common properties include
+    g sets the global property to true
+    i sets the ignoreCase property to true
+    m sets the multiline property to true
+
+    pattern = /java/i
+    pattern.test('JavaScript');
+    =true
+
+</pre>
+                    </p>
+                </article>
+
+                <article>
+                    <h3><em>Document Object Model (DOM)</em></h3>
+                    <p>
+                      The Document Object Model, or DOM for short, represents an HTML document as 
+                      a network of connected nodes that form a tree-like structure.
+                      The HTML tag is the root node, and every other part of the document is a 
+                      child node of this.
+                    </p>
+                    <p>
+                    The Document Object Model (DOM) allows you to access elements of a web page and 
+                    enable interaction with the page by <b>adding and removing elements, changing the
+                    order, content and attributes of elements, and even altering how they are styled.
+                    </b>
+                    </p>
+
+                    <p>
+                       DOM involves the interaction with elements of a web page/document.<b>It is a way
+                       in which JS talks with HTML elements.It has the capacity to create, access, add, 
+                       remove and change the order of these HTML elements.<br>
+                       It also has the capacity to change the content(InnerHTML of elements), attributes
+                       and the CSS of these HTML elements (by adding & removing classes and ids on elements).</b><br>
+                       Its a great tool that is used to make and improve user interactions with a web page.
+                    </p>
+
+                    <p>
+                       We can use JavaScript to access and modify different parts of a web page using
+                    a special built-in object called document.
+                    </p>
+
+                    <h4>Getting Elements from web page</h4>
+                    <p>
+                        Methods that access elements return a node object or a node list, 
+                        which is an array-like object. These objects can then be assigned to a variable and
+                        be modified or inspected.
+                    </p>
+                    <p>
+                      Node lists are array-like objects, but they are not arrays. You can access each 
+                      item using index notation. For example, document.images[0] will return the first 
+                      image in the node list of all the images in the document.<br>
+                      They also have a length property( document.images.length ) , which can be used to 
+                      iterate through every element using a for loop.<br>
+                      for (let i=0 ; i < document.images.length ; i++) { }
+                    </p>
+                    <p>
+                        The main methods used to access elements include: getElementById(),
+                        getElementsByTagName(), getElementsByClassName(), querySelector(),
+                        querySelectorAll()
+                    </p>
+
+                    <h4>childNodes and Children Properties</h4>
+                    <p>
+                      The childNodes property is a list of all the nodes that are children of
+                       the node concerned.<br>
+                       childNodes property returns all the nodes that are children of an element. 
+                       This will include any text nodes, and since whitespace is treated as a text node, 
+                       there will often be empty text nodes in this collection.<br>
+                       The children property only returns any element nodes that are children of that node, 
+                       so will ignore any text nodes. 
+                    </p>
+
+                    <h4>Finding the Value of a Node</h4>
+                    <p>
+                        The value of a node (element) can be found using the textContent And
+                        innerHTML properties.
+                    </p>
+
+                    <h4>Getting and Setting Attributes</h4>
+                    <p>
+                        All HTML elements have a large number of possible attributes such as 
+                        'class', 'id', src, and 'href'. The DOM has numerous getter and setter methods 
+                        that can be used to view, add, remove or modify the value of any of these attributes.
+                    </p>
+                    <p>
+                        These methods include,getAttribute('-attributeName-'), setAttribute('-attributeName-',-attributeValue-)
+                    </p>
+
+                    <h4>classList Property and toggle method</h4>
+                    <p>
+                        The classList property is a list of all the classes an element has. 
+                        Its add method can be used to add a class to an element without overwriting any 
+                        classes that already exist and its remove() method can easily remove a class from an
+                        element.
+                    </p>
+
+                    <p>
+                        The toggle() method is a very useful method that will add a class if an element 
+                        does not have it already, and remove the class if it does have it. 
+                        It returns true if the class was added and false if it was removed.
+
+    <pre>
+        heroes4.classList.toggle('hero'); // will add the 'hero' class
+        console.log(heroes4.className);
+
+        heroes4.classList.toggle('hero'); // will remove the 'hero' class
+        console.log(heroes4.className);
+    </pre>
+                    </p>
+
+                    <p>
+                        the document.getElementsByClassName() and document.getElementsByTagName() methods are
+                        live collections that will update to reflect any changes on the page. <br>
+                        Hence can be useful when creating nav bars that change when clicked on.
+                    </p>
+
+                    <h4>Creating Dynamic Markup</h4>
+                    <p>
+                      The DOM can be used to create new elements and add them to the page, 
+                      as well as edit elements that already exist and remove any unwanted elements
+                    </p>
+
+                    <p>
+                        Methods used include: createElement(),createTextNode(),appendChild() and 
+                        textContent property.Other methods are removeChild() and insertBefore().
+                        The following is the process of creating a new element dynamically.<br>
+                        Create the element node, Create the text node then Append the text node to the element node.
+                    </p>
+
+                    <h4>Function that creates elements dynamically</h4>
+                    <p>
+                        The following function can be used to create HTML elements dynamically.
+    <pre>
+        The function takes in the tag of the element to be created and the text
+        content to be filled in the element as the two arguments
+
+        function createElement (tag,text) {
+            const el = document.createElement(tag);
+            el.textContent = text;
+            return el;
+        }
+    </pre>
+                    </p>
+
+
+                    <h4>InnerHTML</h4>
+
+                    <p>
+                        It returns all the child elements of an element as a string of HTML.
+                    </p>
+
+                    <p>
+                        The innerHTML property is also writable and can be used to place a chunk of HTML
+                        inside an element. This will replace all of a nodes children with the raw HTML 
+                        contained in the string.
+                    </p>
+
+                    <h4>Using the DOM to update CSS for HTML elements</h4>
+                    <p>
+                       Every element linked/created in JShas a style property. This can be used to
+                        dynamically modify the presentation of any element on a web page.
+        <pre>
+        const heroes = document.getElementById('roster');
+        const superman = heroes.children[0];
+
+        superman.style.border = "red 2px solid";
+        </pre>
+                    </p>
+                </article>
+
+                <article>
+                    <h3><em>Event Listeners</em></h3>
+
+                    <p>
+                    Events are another part of the DOM. They provide a link (or an interface)
+                    between the web page and user interactions.<br>
+                    <b>Event Listeners are what users use/interact with to see how
+                     interactive a webpage/website is.Its what programmers use to add attach
+                     dynamic changes and these come inform of clicks or pressing a key.
+                    </b>
+                    </p>
+
+                    <p>
+                        Event listeners are added to elements on the page and are part of the DOM.
+                        The recommended way of dealing with events, and the current standard, 
+                        is to use event listeners.<br>
+                        The addEventListener() method is used to attach an event to a DOM element.
+                        
+<pre>
+    document.body.addEventListener('click',doSomething);
+
+    Its first parameter is the type of event, and 
+    the second is a callback function that is invoked when the event occur
+
+    Note that the parentheses are not placed after the function when it's used as the 
+    argument to an event listener -doSomething- no (), otherwise, the function will 
+    actually be called when the event listener is set, instead of when the event happens!
+</pre>
+                    </p>
+
+                    <p>
+                    Every time a user interacts with a web page, such as clicking on a link, 
+                    pressing a key, or moving a mouse, an event occurs that our program can detect 
+                    and then respond to.
+                    <p>
+                    
+                    <p>
+                        Every time a button/page/element is clicked, a callback function is called. 
+                        So the program can continue processing the rest of the code while it is waiting 
+                        for the click event to happen.
+
+    <pre>
+        document.body.addEventListener("click", doSomething);
+        
+        In the example above, the event listener has been added to the documents 
+        body element. It will call the function doSomething() when any part of the 
+        page is clicked on
+        
+    </pre>
+                    </p>
+
+                    <h4>Common Events</h4>
+                    <p>
+                      Click Event,
+                        <br>
+                       <b>Avoid inline event handlers : onclick="console.log('You Clicked Me!')"</b>
+                    </p>
+
+                    <h4>The Event Object</h4>
+                    <p>    
+                      Whenever an event handler is triggered by an event, the callback function is called.
+                      <b>This function is automatically passed an event object as a parameter that contains
+                      information about the event.</b>
+                    </p>
+                    <p>
+                        The type property of the event object is used to tell us the type of event.<br>
+                        The target property returns a reference to the node that fired the event
+                        <pre>
+        function doSomething(event){
+        console.log(event.type);
+        console.log(event.target);
+        }
+
+        addEventListener('click', doSomething);
+                        </pre>
+                    </p>
+
+
+            
+                    
+                </article> 
+                
+                <!-- Question section -->
+                <div>
+                    <h4>Questions</h4>
+
+                    <article>
+                        <h4><em></em></h4>
+                        <p>
+                        
+                        </p>
+                    
+                        <p>
+                
+                        </p>
+
+                    </article>   
+                </div>
+                
+                <div>
+                <p><a href="objects.html">Interact with Objects</a></p>
+                <p><a href="index-START-mine.html">Real Life Practical use of array methods and objects program</a></p>
+                <p><a href="eventListeners.html">Interact with basics of Event Listeners</a></p>
+                <p><a href="heroes.html">Interact with Heroes Program - A DOM Project</a></p>
+                <p><a href="events.html">Interact with Event Listeners Program</a></p>
+                <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                <p><b>NOTE:</b> Resources used include N2N</p>
+                </div>
+                
+            
+            </section>
+    
+                     
+        </div> 
+    </main>
+      
+</body>
+</html>

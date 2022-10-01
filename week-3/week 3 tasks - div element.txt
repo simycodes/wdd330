@@ -1,0 +1,8 @@
+#mw-pages > div > div
+
+#mw-pages > div > div
+
+
+<div class="mw-category">  - in video
+
+<div class="mw-category mw-category-columns"> - mine

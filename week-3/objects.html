@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Recorder & Editor (Local Storage - Remembering User Info)</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+     
+    <style>
+       
+    </style>
+
+    <script>
+    //METHODS - objects defined inside an object
+    let user = {
+        name: "John",
+        age: 30,
+
+        sayHi() {
+            // "this" is the "current object"
+            console.log(this.name);
+        }
+    };
+
+    user.sayHi(); // John
+
+    //Using this keyword in an object
+    const dice = {
+      sides: 6,
+      roll() {
+        return Math.floor(this.sides * Math.random()) + 1;
+      }
+    }
+
+    console.log(dice.roll());
+    console.log(dice.roll());
+    dice.sides = 10;
+    console.log(dice.roll());
+    console.log(dice.roll())
+
+    //Initializing a method to an object outside its scope using the dot notation
+    let workers = {
+        name: "John",
+        age: 30,
+    };
+
+    // first, declare
+    function sayHi() {
+        console.log("Hello!");
+    }
+
+    // then add as a method
+    workers.sayHi = sayHi;
+    //then call the method
+    workers.sayHi(); // Hello!
+
+    //this IN EVENT LISTENERS - uncommented working at the bottom
+    //this is set to the element that fired the event in an event listener:
+    // let button = document.querySelector('button')
+
+    // button.addEventListener('click', function () {
+    //    console.log(this) // button
+    //    alert(this);
+    // })
+
+    //USING OBJECT LITERALS
+    //Declaring and initializing objects
+    const spiderman = {};
+
+    const name = 'Iron Man';
+    const realName = 'Tony Stark';
+
+    const ironMan = { name, realName };
+
+    const superman = {
+        name: 'Superman',
+        realName: 'Clark Kent',
+        height: 75,
+        weight: 235,
+        hero: true,
+        villain: false,
+        allies: ['Batman','Supergirl','Superboy'],
+        fly() {
+            return 'Up, up and away!';
+        }
+     };
+
+     //Accessing object variables
+     console.log(superman.realName);
+     console.log(superman["villain"]);
+     superman.danceMoves = "poor dance moves"; //adding new property to superman object
+     console.log(superman.danceMoves);
+
+     function motto() {
+        return "The Protector!";
+     }
+
+     superman.motto = motto; //adding a new function to the superman property
+     console.log(superman.motto());
+
+     //deleting newly created function
+     delete superman.motto;
+
+     //Calling object methods
+     console.log(superman.fly());
+
+
+     //looping through an object using for in loop
+     for(const propertyName in superman) {
+        console.log(propertyName + ": " + superman[propertyName]);
+     }
+
+     //NESTED OBJECTS
+     const justiceLeague = {
+        superman: { realName: 'Clark Kent' },
+        batman: { realName: 'Bruce Wayne' },
+        wonderWoman: { realName: 'Diana Prince' },
+        flash: { realName: 'Barry Allen' },
+        aquaman: { realName: 'Arthur Curry' },
+     }
+
+     //accessing nested objects
+     console.log(justiceLeague.batman.realName);
+     console.log(justiceLeague.aquaman.realName);
+
+
+     //CONVERTING OBJECTS TO JSON AND JSON TO OBJECTS
+     supermanJson = JSON.stringify(superman);
+     console.log("This is a JSON file example created from an object")
+     console.log(supermanJson);
+
+     //You can also add a space argument that will add new lines between 
+     //each key-value pair, which is useful when displaying the results in a browser:
+     //JSON.stringify(superman, null, " ");
+
+     supermanObject = JSON.parse(supermanJson);
+     console.log("This is an object created from a JSON file example ")
+     console.log(supermanObject);
+
+
+     //USING THE MATH INBUILT OBJECT/LIBRARY
+     console.log(Math.abs(-4.6)); //change negative numbers to positive numbers
+     console.log(Math.abs(3));
+
+     Math.ceil(4.2); //= 5 //round a number up to the next integer
+     Math.ceil(-4.2);//= 4
+
+     Math.floor(4.2); //= 4 //round a number down to the next integer
+     Math.floor(-4.2) //= 5
+
+     Math.round(4.2); //= 4 //round a number to the nearest integer
+     Math.round(-4.2) 
+
+     Math.trunc(4.9); //returns the integer-part of a number
+     //<< 4
+
+    Math.trunc(-4.2);
+    //<< -4
+
+    console.log(Math.exp(1)); //raise any number (the first argument) to the power of another number (the second argument):
+    Math.pow(3, 2); // 3 squared
+    //<< 9
+
+    Math.sqrt(121);
+    //<< 11
+
+    Math.max(1,2,3);
+    //<< 3
+
+    Math.min(1,2,3);
+    //<< 1
+
+    Math.random(); //gives number between 0 and 1
+    //<< 0.7881970851344265
+
+    6 * Math.random();
+    //<< 4.580981240354013
+
+    Math.floor(6 * Math.random());
+    //<< 4
+
+    //USING THE DATE OBJECT
+    const today = new Date();
+    console.log(today.toString());
+
+    const christmas = new Date('2017 12 25');
+    console.log(christmas.toString());
+
+    const bday = new Date('18 May 2018');
+    console.log(bday.toString());
+
+    console.log(today.getDay()); //days 0 - 6 - sunday is 0
+    console.log(today.getDate());//days 1 - 30/31 returns actual date of the day
+    console.log(today.getMonth()); //months 0 - 11 - january is 0
+    console.log(today.getFullYear()); //returns current year
+    console.log(today.getTime());
+
+
+    //USING REGEX
+    const pattern = /[a-zA-Z]+ing$/;
+
+    //Does the provided argument end in +ing whether in lower (a-z) cases or
+    pattern.test('joke');
+    //<< false
+
+    pattern.test('joking');
+    //<< true
+
+    pattern.test('jokingly');
+    //<< false
+
+    pattern.exec('joke'); 
+    //<< null
+
+    pattern.exec('joking');
+    //<< [ 'joking', index: 0, input: 'joking' ]
+
+    //A RegExp can be as basic as 
+    const pattern1 = /JavaScript/;
+
+    //using angles brackets in regex
+    //This character group [<text inside angle bracktes>] represents any one of the 
+    //characters inside the brackets.For example, the following regular expression 
+    //matches any vowel:
+    const vowels = /[aeiou]/;
+    //<< /[aeiou]/
+
+    //A sequence of characters can also be represented by placing a dash [ - ] 
+    //between the first and last characters; for example, all the uppercase letters
+    // can be represented as
+
+    const letters = /[A-Z]/;
+    const numbers = /[0-9]/;
+    ///[^A-Z]/ the ^ negatives the sequence - This regular expression represents any 
+    //character that is not a capital letter:
+
+    //Complex regEx - combine text in angles brackets
+    //the following regular expression represents the letter J (lowercase or capital) 
+    //followed by a vowel, followed by a lowercase v, followed by a vowel:
+
+    pattern2 = /[Jj][aeiou]v[aeiou]/;
+    //<< /[Jj][aeiou]v[aeiou]/
+    //This means,first letter of word to be tested must be either J or j
+    //the second letter must be a vowel,either a, e, i, o, u
+    //the third letter must be strictly a lower case v
+    //The fourth letter must be a vowel,either a, e, i, o, u
+
+    pattern.test('JavaScript');
+    //<< true
+
+    pattern.test('jive');
+    //<< true
+
+    pattern.test('hello');
+    //<< false
+
+    console.log(pattern.test('Ajvakva'));
+    //<< false --The word to be tested must follow the order and position of placement
+    //as defined in the pattern having all stated characters at different positions is
+    // not enough
+
+
+    //REGEX FOR OPENING PDF FILES
+    const pdf = /.*\.pdf$/;
+
+    pdf.test('chapter5.pdf');
+    //<< true
+
+    pdf.test('report.doc');
+    //<< false
+
+
+
+
+
+   
+
+    </script>
+
+
+</head>
+<body>
+
+    <h1 class="application-title">A Objects Program</h1>
+    
+    <main>
+        <div class="child-container">
+            <h2>Use JS file & Console to see output</h2>
+            <p>
+            Some text here
+            </p>
+
+            <button>
+                this in event listeners
+            </button>
+        
+       </div>
+    </main>
+    
+    <script>
+
+    let button = document.querySelector('button');
+
+    button.addEventListener('click', function () {
+       console.log(this) // button
+       alert(`this is set to the element that fired the event in an event listener.In this case its ${this} you just clicked`);
+    });
+
+    </script>
+    
+</body>
+</html>

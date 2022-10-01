@@ -32,7 +32,7 @@
                     <li><a href="arrays.html">Click Here to interact with JS Arrays,Maps and Sets</a></li>
                     <li><a href="functions.html">Click Here to interact with JS Functions</a></li>
                     <li><a href="array-functions.html">Click Here to interact with Array methods and callbacks</a></li>
-                    <li><a href="../quiz-ninja-project/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+                    <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
                 </ol>
     
                 <section>
@@ -193,10 +193,12 @@
                         <p>
                            for-of LOOP,replaces the use of usual for loop to loop through an array<br><br>
                            let avengers2 = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow'];
-                           <br><br>
-                           for(const value of avengers2){
-                              console.log(value);
+                           <br>
+                           <pre>
+                              for(const value of avengers2){
+                                  console.log(value);
                             }
+                           </pre>
                             <br>
                             Note that the variable --value-- needs to be declared using const.<br>
                             The for-of loop can also be used to loop through sets and maps
@@ -338,10 +340,46 @@
                               }
                             }
 
+                            OR
+
+                            Ascending oder
+
+                            numbers.sort((a,b) => {
+                              if(a > b){
+                                 return -1;
+                              }
+                              else {
+                                 return 1;
+                              }
+                            })
+
+                            Descending order
+
+                            if(a > b){
+                              return 1;
+                            }
+                            else {
+                              return -1;
+                            }
+
                             //Calling the functions
                             const numbers =[1,3,12,5,23,18,7];
                             console.log(numbers.sort(numerically));
                             console.log(numbers.sort(numerically2));
+                         </pre>
+
+                         <p>If numbers are being sorted for the purpose of finding the 
+                           biggest or smallest number,then two inbuilt functions can be 
+                           passed these numbers as arguments and they return the smallest
+                           and the biggest
+                         </p>
+
+                         <pre>
+                           Math.max(1,2,3);
+                           //<< 3
+
+                           Math.min(1,2,3);
+                           //<< 1
                          </pre>
 
                           <article>
@@ -350,7 +388,7 @@
                               Array methods make use of certain callback functions in order to simply
                               the working processes such as looping through an array and displaying its
                               items.<br>
-                              These methods that make use of callbacks include the forEach(),map()
+                              These methods that make use of callbacks include the filter(),sort(),reduce(),map(),forEach()
                             </p>
                         
                             <p>
@@ -389,7 +427,7 @@
                     <p><a href="arrays.html">Click Here to interact with JS Arrays,Maps and Sets</a></p>
                     <p><a href="functions.html">Click Here to interact with JS Functions</a></p>
                     <p><a href="array-functions.html">Click Here to interact with Array methods and callbacks</a></p>
-                    <p><a href="../quiz-ninja-project/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                    <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
                     <p><b>NOTE:</b> Resources used include N2N</p>
                 
                 </section>
