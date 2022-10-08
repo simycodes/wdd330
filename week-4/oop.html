@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Dom Program - Justice League</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>Program Name</h1>
+    </header>
+
+    <main>
+        <div class="child-container">
+           <h2>OOP.Use JS file & Console to see output</h2>
+          
+        </div>
+    </main>
+
+</body>
+
+<script>
+//DEFINING OBJECTS USING LITERAL NOTATION
+const dice = {
+    sides: 6,
+    roll() {
+        return Math.floor(this.sides * Math.random() + 1)
+    }    
+}
+
+//DEFINING OBJECTS USING A CONSTRUCTOR
+//The parentheses are not required when instantiating a new object using a constructor 
+//function unless default arguments need to be used
+
+const Dice = function(sides=6){
+    this.sides = sides;
+    this.roll = function() {
+        return Math.floor(this.sides * Math.random() + 1)
+    }
+}
+
+//creating instance of Dice class
+
+const redDice = new Dice();
+console.log(redDice);
+console.log(redDice.sides);
+console.log(redDice.roll());
+
+//object created by literal notation -A literal is still considered to be an instance
+// of the Object constructor:
+const literalObject = {};
+
+//object created using an inbuilt constructor
+constructedObject = new Object();
+
+//array created by literal notation
+const literalArray = [1,2,3]; //[]
+
+//array created using an inbuilt constructor
+constructedArray = new Array(1,2,3);
+
+//ES6 Class Declarations
+class Dice2 {
+    constructor(sides=6) {
+        this.sides = sides;
+    }
+
+    roll() {
+        return Math.floor(this.sides * Math.random() + 1);
+    }
+}
+
+// creating an instance of Dice2 Class
+
+const blueDice = new Dice(20);
+console.log(blueDice);
+console.log(blueDice.sides);
+console.log(blueDice.roll());
+
+
+// JS-Prototypal Inheritance
+// JavaScript uses a prototypal inheritance model. This means that every class has a
+// prototype property that is shared by every instance of the class. So any properties or 
+// methods of a class’s prototype can be accessed by every object instantiated by that class.
+class Turtle {
+    constructor(name) {
+        this.name = name;
+        this.weapon = 'hands';
+    }
+    sayHi(){
+        return `Hi dude, my name is ${this.name}`;
+    }
+    // attack(){
+    //     return `Feel the power of my ${this.weapon}!`;
+    // }
+}
+
+// creating a turtle instance
+const leo = new Turtle('Leonardo');
+console.log(leo);
+console.log(leo.name);
+console.log(leo.sayHi());
+//console.log(leo.attack());
+
+// The prototype property of the class is used to augment/add the class with extra methods 
+// and properties after it has been created.
+
+// adding a property/variable and method to the Turtle class using the prototype class
+// property/attribute
+Turtle.prototype.weapon = 'Hands';
+
+Turtle.prototype.attack = function(){
+       return `Feel the power of my ${this.weapon}!`;
+}
+
+// Now if we create a new Turtle instance, we can see that it inherits the weapon property
+// and attack() method from the Turtle.prototype object, as well as receiving the name 
+// property and sayHi() method from the class declaration.
+
+const raph = new Turtle('Raphael');
+
+raph.name
+// << 'Raphael'
+
+raph.sayHi()
+// << 'Hi dude, my name is Raphael'
+
+raph.weapon
+console.log(raph.weapon);
+// << 'Hands'
+
+raph.attack()
+console.log(raph.attack());
+// << 'Feel the power of my Hands!'
+
+// The prototype object is live, so if a new property or method is added to the prototype,
+// any instances of its class will inherit the new properties and methods automatically,
+// even if that instance has already been created.
+
+// Overwriting Prototype Properties
+// An object instance can overwrite any properties or methods inherited from its prototype
+// by simply assigning a new value to them. For example, we can give our turtles their own
+// weapon properties
+
+leo.weapon = 'Katana Blades';
+// << 'Katana Blades';
+
+// What Should the Prototype Be Used For?
+// The prototype can be used to add any new properties and methods after the class has
+// been declared. It should be used to define any properties that will remain the same
+// for every instance of the class.
+
+// A golden rule to remember is: Never use arrays or objects as a default value in 
+// prototype.
+// This is not a problem if arrays or objects are set as default values from within the
+// constructor function in the class declaration.
+
+// NOTE:Any extra methods and properties that need to be augmented to the class declaration
+// after it’s been defined can be added to the prototype. These will be added to all 
+// instances, even those that have already been created.
+
+
+// PUBLIC AND PRIVATE METHODS
+//Avoid objects that are public facing ― giving users or external services too much access
+// to properties and methods, could be a recipe for disaster!
+class Turtle2 {
+    constructor(name,color) {
+        this.name = name;
+        let _color = color;
+
+        this.setColor = (color) => {
+            if(typeof color === 'string'){
+                return _color = color;
+                } else {
+                    throw new Error('Color must be a string');
+                }
+        }
+
+        this.getColor = () => _color;
+    }
+}
+
+raph2 = new Turtle2('Raphael','Red');
+// << Turtle { name: 'Raphael', setColor: [Function], getColor: [Function] }
+
+raph2.getColor();
+// << 'Red'
+
+// raph2.setColor(4);
+// << Error: Color must be a string - This way access & modification to private data is
+// controlled
+
+// The _color property is created as a variable inside the scope of the constructor 
+// function inside the class declaration. This makes it impossible to access outside
+// of this scope. The getColor() and setColor() methods are known as getter and setter 
+// methods and they form a closure over this variable and provide controlled access to
+// the property instead:
+
+//INHERITANCE USING extends KEYWORD
+class Turtle3 {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHi() {
+        return `Hi dude, my name is ${this.name}`;
+    }
+
+    swim() {
+        return `${this.name} paddles in the water`;
+    }
+}
+
+//Inheritance in action
+class NinjaTurtle extends Turtle {
+    constructor(name) {
+        super(name);
+        this.weapon = 'hands';
+        // the keyword super refers to the parent class, and can be used to access any
+        // properties and call any methods of the parent class.
+        // Here its used to call the constructor function of the Turtle class.
+    }
+    attack() { return `Feel the power of my ${this.weapon}!` } 
+}
+
+
+// CREATING OBJECTS FROM OTHER OBJECTS
+// The Object() constructor function has a method called create that can be used to create
+// a new object that is an exact copy of the object that is provided as an argument
+// The object that is provided as the argument acts as the prototype for the new object.
+
+// This will act as the prototype for all other Human objects. 
+const Human = {
+    arms: 2,
+    legs: 2,
+    walk() { console.log('Walking'); }
+}
+
+// Creating an instance of Human using the Object.create() method that inherits all the 
+//properties and methods from the Human object.
+const lois = Object.create(Human);
+
+lois.arms
+// << 2
+
+lois.legs
+// << 2
+
+lois.walk()
+// << Walking
+
+// Extra properties can then be added to each instance using assignment
+lois.name = 'Lois Lane';
+// << 'Lois Lane'
+
+lois.job = 'Reporter';
+// << 'Reporter'
+
+// It’s often easier to create the object, then add each new property one by one. 
+// This can be made quicker using the mixin() function that is covered later.
+
+// Object-Based Inheritance
+const Superhuman = Object.create(Human);
+
+Superhuman.name = 'Name Needed';
+Superhuman.realName = 'Real Name Needed';
+
+// no extends used,just add new attributes and methods to the new instance which acts as
+// a class as well and can be used to create other objects.
+Superhuman.change = function() {
+    return `${this.realName} goes into a phone box and comes out as ${this.name}!`;
+};
+
+// Now we can use the Superhuman object as a prototype to create more objects based on it
+const superman = Object.create(Superhuman);
+
+// Once a Superhuman object has been created, we can overwrite the default properties by
+// assignment:
+superman.name = 'Superman';
+superman.realName = 'Clark Kent';
+
+// Now we can see that it has inherited the change() method from the Superhuman object:
+superman.change()
+//<< Clark Kent goes into a phone box and comes out as Superman!
+
+</script>
+
+</html>

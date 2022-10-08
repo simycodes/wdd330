@@ -11,9 +11,8 @@ const view = {
     result: document.getElementById('result'),
     info: document.getElementById('info'),
     start: document.getElementById('start'),
-    response: document.querySelector('#response'),
 
-    //helper function render() that is used to update the content of an 
+    //helper function render() that can be used to update the content of an 
     //element on the page. Arguments include:
     //first(target) is the element that displays the content, the second is for the 
     //content it’s to be updated with, and the last is an object of any HTML 
@@ -34,34 +33,8 @@ const view = {
     show(element){
        element.style.display = 'block';
      },
-
     hide(element){
        element.style.display = 'none';
-    },
-
-    resetForm(){
-        this.response.answer.value = '';
-        this.response.answer.focus();
-    },
-
-    //view.setup() is used to set up the view when the game start
-    setup(){
-        this.show(this.question);
-        this.show(this.response);
-        this.show(this.result);
-        this.hide(this.start);
-        this.render(this.score,game.score);
-        this.render(this.result,'');
-        this.render(this.info,'');
-        this.resetForm();
-    },
-
-    //his is called at the end of the game, and is responsible for hiding any elements
-    //that aren’t required and making the start button visible again.
-    teardown(){
-        this.hide(this.question);
-        this.hide(this.response);
-        this.show(this.start);
     }
 };
 
@@ -70,48 +43,52 @@ const game = {
 
         //this.questions becomes an array variable created by the destructuring process
         //of the passed in quiz object -hence this,questions now holds 3 objects
-        this.score = 0;
         this.questions = [...quiz];
-        view.setup();
-        this.ask();
+        this.score = 0;
+
+        //make the start button disappear while the game is in progress, then reappear 
+        //once the game has finished
+        view.hide(view.start);
+        
+        // main game loop
+        //using for-of loop through this.questions because its an array
+        for(const question of this.questions){
+           //this.question holds a single question(object) in each loop
+           //this.question is has global scope,no need to pass it as argument in
+           //this.ask() - its used directly there and in the check() method
+           this.question = question; 
+           this.ask();
+        }
+        // end of main game loop
+        this.gameOver();
     },
 
-    ask(name){
-        if(this.questions.length > 0) {
-            //the pop() method is used to remove the last element of the array and 
-            //assign it to this.question
-            this.question = this.questions.pop();
-            const question = `What is ${this.question.name}'s real name?`;
-            view.render(view.question,question);
-        }
-        else {
-            this.gameOver();
-        }
+    ask(){
+        const question = `What is ${this.question.name}'s real name?`;
+        view.render(view.question,question);
+        const response =  prompt(question);
+        this.check(response);
     },
 
-   check(event){
-        event.preventDefault();
-        const response = view.response.answer.value;
+    check(response){
         const answer = this.question.realName;
         if(response === answer){
             view.render(view.result,'Correct!',{'class':'correct'});
+            alert('Correct!');
             this.score++;
             view.render(view.score,this.score);
-        } else {
+        } 
+        else {
             view.render(view.result,`Wrong! The correct answer was ${answer}`,{'class':'wrong'});
+            alert(`Wrong! The correct answer was ${answer}`);
         }
-        view.resetForm();
-        this.ask();
     },
 
     gameOver(){
+        view.show(view.start);
         view.render(view.info,`Game Over, you scored ${this.score} point${this.score !== 1 ? 's' : ''}`);
-        view.teardown();
     }
 }
 
+game.start(quiz);
 view.start.addEventListener('click', () => game.start(quiz), false);
-view.response.addEventListener('submit', (event) => game.check(event), false);
-view.hide(view.response);
-
-

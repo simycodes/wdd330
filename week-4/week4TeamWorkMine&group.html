@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Toe Game Task</title>
+  
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        .container {
+            font-family: sans-serif;
+            background-color:#DAE4DF;
+            color:black;
+            font-size: 1.2rem;
+            border:2px solid red;
+        }
+
+        table {
+            margin-top: 50px;
+            margin-right: 10px;
+            margin-left: 10px;
+            border: 10px solid #C5CAC8;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 3.5rem;
+            border: 3px solid black;
+            text-align: center;
+        }
+
+        caption {
+            padding: 10px;
+            caption-side: bottom;
+            font-size: 1rem;
+        }
+
+        .resetButton {
+            margin-top:-1rem;
+            margin:0 auto;
+        }
+
+        @media only screen and (min-width: 35em) {
+
+            table {
+                margin: 150px auto;
+                box-shadow: 8px 10px 18px #7495A9;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <table>
+            <caption>TIC TOE GAME</caption>
+
+            <tbody id="board">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+                
+        </table>
+
+        <div class="resetButton">
+            <button id="reset">Reset Game</button>
+        </div>
+
+    </div>
+
+    
+
+    <script>
+
+    let checkPlayer = 1;
+    
+    function addCrossAndCircle(event){
+        if(checkPlayer % 2 === 0){
+            event.target.innerHTML = "O";
+        }
+        else {
+            event.target.innerHTML = "X";
+        }  
+        checkPlayer = checkPlayer + 1;
+    }
+
+    const board = document.getElementById('board');
+    board.addEventListener('click',addCrossAndCircle);
+
+    const reset = document.getElementById('reset');
+    reset.addEventListener('click',removeMarks);
+
+    function removeMarks(){
+        console.log("Am working!");
+        const allTds = Array.from(board.querySelectorAll('td'));
+        console.log(allTds);
+
+        const mappedArray =  allTds.map((td)=>{
+                td.innerHTML = "";
+        });
+
+        
+
+    }
+
+
+    </script>
+
+</body>
+</html>

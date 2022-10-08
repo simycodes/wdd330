@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wdd330 Week-4 Notes</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+        <main>
+            <h1 class="notes-heading">Week 1 Notes</h1>
+            <div class="child-container">
+    
+                <ol class="center-projects">
+                    <li><a href=""></a></li>
+                    <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+                </ol>
+    
+                <!-- Beginning of a main topic -->
+                <section>
+                    <h2>Forms, OOP</h2>
+
+                    <!-- sub topic goes here -->
+                    <article>
+                      <h3><em>Forms</em></h3>
+                      <p>
+                        Forms are a very common method of interacting with a web page. 
+                      </p>
+                      <p>
+                        Forms are made up of a -form- element that contains form controls such as input fields,
+                        select menus and buttons. These input fields can be populated with information that 
+                        is processed once the form has been submitted.
+                      </p>
+                      <p>
+                        It is possible, and becoming more and more common, to process the information in a 
+                        form on the -front end- before it is sent to the server using JavaScript, which is 
+                        what will be focusing on in this chapter.
+                      </p>
+
+                      <h4>Accessing Form Elements</h4>
+                      <p>
+                        The legacy DOM had a useful property called document.forms that returns an HTML 
+                        collection of all the forms in the document in the order they appear in the markup.
+                        Even though there is only one form in our example, a collection will still be
+                        returned, so we have to use index notation to return the first (and only) 
+                        form object.-- const form = document.forms[0];  --<br>
+                        This is the equivalent of using the following method 
+                        -- const form = document.getElementsByTagname('form')[0]; --
+                        or using the name attribute of the form
+                        -- const form = document.forms.search; -- and const form = document.forms['search']; --preferred way --
+                      </p>
+                      <p>
+                        A form object also has a method called elements that returns an HTML collection of all
+                        the elements contained in the form. These may include an input element and a button element:
+                        -- const [input,button] = form.elements; -- <br>
+                        Form controls can be also accessed using their --name-- attributes as if it was a 
+                        property of the form object.
+                        -- const input = form.searchInput -- or -- const input = form['searchInput'] --
+                      </p>
+
+                      <h4>Form Properties and Methods</h4>
+                      <p>
+                        Form objects have a number of useful properties and methods that can be used to 
+                        interact with the form.These include form.submit,form.reset and form.action.
+                      </p>
+
+                      <h4>Form Events</h4>
+                      <p>
+                          Main form event include focus(triggered when an element is focused),
+                          blur(occurs when the user moves the focus away from the form element),
+                          change(occurs when the user moves the focus away from the form element after changing it),
+                          submit(occurs when the form is submitted)  .
+                      </p>
+
+                      <h4>Submitting a Form</h4>
+                      <p>
+                        Possibly the most important form event is the submit event, occurring when the form is
+                        submitted. Usually this will send the content of the form to the server to be 
+                        processed, but we can use JavaScript to intercept the form before it is sent by 
+                        adding a submit event listener.
+                      </p>
+
+                      <h4>Form Validation</h4>
+                      <p>
+                        Form validation is the process of checking whether a user has entered the information into a form correctly. 
+                        Examples of the types of validation that occur include ensuring that:A required field is completed
+                        An email address is valid,A number is entered when numerical data is required,
+                        A password is at least a minimum number of characters
+                      </p>
+                      <p>
+                        Validation can occur on the client side using JavaScript, and on the server side. 
+                        It is advisable to use both client-side and server-side validation.
+                      </p>
+                      <p>
+                         JavaScript should not be relied upon to validate any data before it is saved to a 
+                         database. This is because it is possible for a user to modify the JavaScript code 
+                         and bypass the validation rules. It's also very easy to bypass the front-end 
+                         completely and send arbitrary data to the application's backend. 
+                         <b>
+                          For these reasons,JavaScript validation (on front-end) should be used to enhance the
+                          user experience when filling in a form by giving feedback about any errors before
+                          it is submitted.
+                         </b>
+                      </p>
+                    </article>
+                    
+                    <!-- sub topic goes here -->
+                    <article>
+                       <h3><em>Object Oriented Programming - OOP</em></h3>
+                       <p>
+                        <b></b>
+                        There are three main concepts in OOP: encapsulation, polymorphism and inheritance.
+                        Encapsulation involves keeping all the programming logic inside an object and making
+                        methods available to implement the functionality, without the outside world needing
+                        to know how it is done.<br>
+                        Polymorphism involves objects having to share the same method, but also having the 
+                        ability to override shared methods with a more specific implementation.<br>
+                        Inheritance involves taking an object that already exists and inheriting all its 
+                        properties and methods.Then improve on its functionality by adding new properties
+                        and methods.
+                       </p>
+                       <p>
+                        <b>NOTE ON CLASSES:</b>
+                        Many object-oriented languages, such as Java and Ruby, are known as class-based languages.
+                        This is because they use a class to define a blueprint for an object.
+                        Objects are then created as an instance of that class, and inherit all the properties and
+                        methods of the class.<br>
+                        JavaScript didn't have classes before ES6, <b>and used the concept of using actual objects
+                        as the blueprint for creating more objects. This is known as a prototype-based language.</b>
+                        Even though ES6 now supports classes, it still uses this prototypal inheritance model in
+                        the background.
+                       </p>
+                       <p>
+                        Objects can be created using a constructor method.
+                        <b>Objects created using the literal notation& class do not reference its methods and 
+                          methods with this key word when creating the object BUT using the constructor method,
+                          this keyword is used to make reference to the object variables and methods when 
+                          creating the object.And also,when constructor is used,the name of the object-class needs
+                          to start with an uppercase.<br>
+                          In ES6 this keyword is used to make reference to the object variables inside the constructor
+                          when creating a JS class
+                        </b>
+                          <pre>
+                      Creating an object using literal notation
+                        
+                      const dice = {
+                          sides: 6,
+                          roll() {
+                              return Math.floor(this.sides * Math.random() + 1)
+                          }    
+                      }
+                      
+
+                      Creating an object-class using a constructor
+
+                      const Dice = function(sides=6){
+                          this.sides = sides;
+                          this.roll = function() {
+                          return Math.floor(this.sides * Math.random() + 1)
+                          }
+                      }
+
+          The keyword this is used to represent the object that will be returned
+          by the constructor function.
+
+          Before ES6, constructor functions were the only way of achieving class-like
+          behavior in JavaScript.
+
+                        ES6 Class Declarations
+
+                        class Dice2 {
+                            constructor(sides=6) {
+                                this.sides = sides;
+                            }
+
+                            roll() {
+                                return Math.floor(this.sides * Math.random() + 1)
+                            }
+                        }
+                          </pre>
+                       </p>
+                       <p>
+                        The class declaration syntax works in exactly the same way as the constructor function 
+                        syntax, because it is actually just syntactic sugar that is implemented in the same way
+                        in the background.<br>
+                        The ES6 class declarations are preferable to the constructor function syntax because 
+                        they are more succinct, easier to read and all code in a class definition is 
+                        implicitly in strict mode, so doesn't need the 'use strict' statement. 
+                       </p>
+
+                       <h4>Built-In Constructor Functions</h4>
+                       <p>
+                        JavaScript contains a number of built-in constructor functions such as Object, Array,
+                        and Function that can be used to create objects, arrays and functions instead of 
+                        literals.<br>
+                        The easiest way to create a new object is to use the literal syntax<br>
+                        const literalObject = {}; OR constructedObject = new Object(); -with constructor
+                       </p>
+
+                       <h4>Static methods</h4>
+                       <p>
+                        The static keyword can be used in class declarations to create a static method. 
+                        These are sometimes called class methods in other programming languages. 
+                        A static method is called by the class directly rather than by instances of the class.
+                        <br>
+                        Static methods are only called on actual classes and are not available to instances of 
+                        the class.Example,Dice as the class name<br>
+                        Dice.description()
+                       </p>
+
+                       <h4>Polymorphism</h4>
+                       <p>
+                        The concept of polymorphism means that different objects can have the same method,
+                        but implement it in different ways.<br>
+                        The toString() method is a good demonstration of polymorphism, since different objects
+                        have the same method but implement it differently. The advantage of this is that 
+                        higher-level functions are able to call a single method, even though it may be
+                        implemented in various ways
+                       </p>
+
+                       <h4>Creating Objects from Other Objects</h4>
+                       <p>
+                        It is possible to avoid using classes altogether, and create new objects based on 
+                        another object that acts as a 'blueprint' or prototype instead.
+                       </p>
+                       <p>
+                        The Object() constructor function has a method called create that can be used to create 
+                        a new object that is an exact copy of the object that is provided as an argument. 
+                        The object that is provided as the argument acts as the prototype for the new object.
+                       </p>
+                    </article>
+                    
+
+                    <!-- Question section -->
+                    <div>
+                        <h4>Questions</h4>
+
+                        <article>
+                            <h4><em> </em></h4>
+                            <p>
+                            
+                            </p>
+                        
+                            <p>
+                    
+                            </p>
+
+                        </article>   
+                    </div>
+                    
+                    <p><a href=".html"> </a></p>
+                    <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                    <p><b>NOTE:</b> Resources used include N2N</p>
+                
+                </section>
+                
+            </div> 
+    
+        </main>
+      
+</body>
+</html>
