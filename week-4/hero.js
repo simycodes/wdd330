@@ -29,6 +29,9 @@ function makeHero(event) {
 
     //form.heroName.addEventListener('keyup',disableSubmit,false);
 
+    // Saving the newly created hero object into local storage
+    localStorage.setItem('hero', JSON.stringify(hero));
+
     alert(JSON.stringify(hero)); // convert object to JSON string and display in alert dialog
     return hero;
 }

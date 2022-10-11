@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Recorder & Editor (Local Storage - Remembering User Info)</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <script>
+
+    localStorage.setItem('name', 'Walter White');
+
+    // To illustrate that it’s being saved locally, try completely closing your browser,
+    // reopening it, and entering the following code in the console:
+
+    console.log(localStorage.getItem('name')); 
+
+    // Rather than using the getItem() and setItem() methods, assignment can be used 
+    // instead. 
+    // In the next example, we simply reference localStorage.name as if it was a variable
+    // to change its value:
+
+    localStorage.name = 'Heisenberg'; 
+
+    console.log(localStorage.name); 
+    //<< "Heisenberg";
+  
+    // Removing from localStorage
+    localStorage.removeItem('name');
+    // or
+    // delete localStorage.name;
+
+    // Clear everything in local storage
+    localStorage.clear();
+
+    // By using JSON, we can store any JavaScript object in local storage using the
+    // stringify() and retrieving data from local storage using JSON.parce() method
+    // For example, we could save an object by adding the following line
+    // superman as an object
+    const superman = {
+        name: "Batman",
+        age:25
+    }
+    // This saves the hero object as a JSON string using the string 'supermanInLocalStorage'
+    // as the key.
+    localStorage.setItem('supermanInLocalStorage', JSON.stringify(superman));
+    
+    // To retrieve the superhero as a JavaScript object:
+    supermanFromLocalStorage = JSON.parse(localStorage.getItem('supermanInLocalStorage'));
+    console.log(supermanFromLocalStorage);
+
+
+    // STORING AN ARRAY IN localStorage RETRIEVING IT
+    const books = [
+    {
+        id:1,
+        img: "https://images-na.ssl-images-amazon.com/images/I/8144Vic9C5L._AC_UL900_SR900,600_.jpg",
+        title: "I Love You to the Moon and Back",
+        author: "Amelia Hepworth"
+    },
+    {
+        id:2,
+        img: "https://images-na.ssl-images-amazon.com/images/I/91SukbcXCpL._AC_UL900_SR900,600_.jpg",
+        title: "Verity",
+        author: "Colleen Hoover"
+    },
+    {
+        id:3,
+        img: "https://images-na.ssl-images-amazon.com/images/I/61QR7qoEYVL._AC_UL900_SR900,600_.jpg",
+        title: "Ugly Love",
+        author: "Colleen Hoover"
+    },
+    {
+        id:4,
+        img: "https://images-na.ssl-images-amazon.com/images/I/81PMOtoT7zL._AC_UL900_SR900,600_.jpg",
+        title: "Fairy Tale",
+        author: "Stephen King"
+    }
+    ];
+
+    // This saves the book array as a JSON string using the string 'booksInLocalStorage' 
+    // as the key.
+    localStorage.setItem('booksInLocalStorage', JSON.stringify(books));
+    
+    // To retrieve books as a JavaScript object:
+    booksFromLocalStorage = JSON.parse(localStorage.getItem('booksInLocalStorage'));
+    console.log(booksFromLocalStorage);
+
+
+
+    </script>
+
+</head>
+<body>
+    <h1 class="application-title">Storing & Retrieving Objects and Arrays in the Local Storage</h1>
+ 
+    <main>
+        <div class="child-container">
+          <p>
+            The process of Storing & Retrieving Objects and Arrays in the Local Storage
+            is done by using the JSON.stringify() and JSON.parse() methods as data can not
+            be stored an a JS object but as JSON.
+          </p>
+          <p>See JS file and Console to interact with the program</p>
+        </div>
+    </main>
+   
+   
+    
+</body>
+</html>
+
+
+
+
+

@@ -24,12 +24,13 @@
 <body>
 
         <main>
-            <h1 class="notes-heading">Week 1 Notes</h1>
+            <h1 class="notes-heading">Week 4 Notes</h1>
             <div class="child-container">
     
                 <ol class="center-projects">
                     <li><a href="week4TeamWorkMine&group.html">Interact a Tic Toe Game - Event Listeners in Action</a></li> 
                     <li><a href="hero.html">Interact Form Program</a></li>
+                    <li><a href="MVC/list.html">Interact an MVC pattern driven program</a></li>
                     <li><a href="oop.html">Interact with an OOP program</a></li>
                     <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
                 </ol>
@@ -247,7 +248,115 @@
                         The object that is provided as the argument acts as the prototype for the new object.
                        </p>
                     </article>
+
+                    <article>
+                      <h3><em>Modular JavaScript</em></h3>
+                      <p>
+                        A module is a self-contained piece of code that provides functions and methods that can 
+                        then be used in other files and by other modules.
+                        This helps to keep code organized in separate, reusable files, which improves code 
+                        maintainability. The code in a module should have a single purpose, and group together
+                        functions with distinct functionality. For example, you might keep any functions used
+                        for Ajax in their own module. This could then be used in any projects where Ajax was
+                        required. 
+                      </p>
+                      <p>
+                        Keeping code modular helps to make it more loosely coupled and interchangeable, 
+                        meaning you can easily swap one module for another without affecting other parts 
+                        of a project. Indeed, small single-purpose modules are the exact opposite of large
+                        monolithic libraries as they enable developers to use only the modules that are 
+                        needed, avoiding any wasted code.
+                      </p>
+                      <p>
+                        Modules also allow a public API to be exposed, while keeping the implementation hidden 
+                        away inside the module.
+                      </p>
+
+                      <h4>Coupling</h4>
+                      <p>
+                        The coupling of code refers to how dependent certain elements or modules of code are 
+                        on each other. Two pieces of code are said to be tightly coupled if one relies on 
+                        the other to run.This will often mean that changes to one piece of code will necessitate changes in the other.
+                      </p>
+                      <p>
+                        On the other hand, two pieces of code are said to loosely coupled if one piece of code
+                         can be easily substituted by another without affecting the final outcome. <br>
+                         For example, you might have a choice of two modules that simplify the process of 
+                         connecting to a websocket. Both of these modules would likely implement a connect() 
+                         method, so your code could simply refer to connect() rather than having to explicitly 
+                         refer to a particular module. 
+                      </p>
+                      <p>
+                        This would then allow you change between the two modules without having to change any of 
+                        the underlying code. It is considered good design to keep code as loosely coupled as
+                        possible as this allows for the most flexibility in developing systems of code, as 
+                        different modules can be used independently and in a variety of different applications, 
+                        rather than being restricted to a single use-case.
+                      </p>
+
+                      <h4>ES6 Modules</h4>
+                      <p>
+                        There are a few important points about modules that are worth keeping in mind:
+                        All code in modules is always in strict mode without the need for 'use strict' and there
+                        is no way to opt out of this.<br>
+                        A module has its own global scope, so any variables created in the top-level of a module
+                        can only be accessed within that module.<br>
+                        The value of this in the top level of a module is undefined, rather than the global object.
+                        <br>
+                        You can't use HTML-style comments in modules (although this isn't very common in any 
+                        JavaScript program these days).<br>
+                        A ES6 module file is just a normal JavaScript file, but uses the keyword export to 
+                        specify any values or functions that are to be made available from the module.
+                        This highlights another important fact about modules – not everything in the module 
+                        needs to be used.
+                      </p>
+                    </article>
                     
+                    <article>
+                      <h3>MVC Frameworks</h3>
+                      <p>
+                        Model-View-Controller (MVC) is a design pattern that’s been used for a long time in 
+                        server-side languages.MVC separates an application into three distinct, independent 
+                        components that interact with each other:
+                      </p>
+                      <p>
+                        Models are objects that implement the functionality for creating, reading, updating
+                        and deleting (known as CRUD tasks) specific pieces of information about the 
+                        application, as well as any other associated logic and behavior.<br>
+                        In a to-do list application, for example, there would be a task model providing methods 
+                        to access all the information about the tasks such as names, due dates and completed
+                        tasks. This data will often be stored in a database or some other container.<br>
+                        In JavaScript, a model is often represented by a class that can create new instances 
+                        of an object
+                      </p>
+                      <p>
+                        Views provide a visual representation of the model showing all the relevant information.
+                        In a web application, this would be the HTML displayed on a web page. Views also 
+                        provide a way for users to interact with an application, usually via forms.<br> 
+                        In a to-do list application, the views would display the tasks as an HTML list with 
+                        checkboxes that a user could tick to say a task had been completed.
+                      </p>
+                      <p>
+                        Controllers link models and views together by communicating between them. They respond 
+                        to events, which are usually inputs from a user (entering some data into a form, for 
+                        example), process the information, then update the model and view accordingly.<br>
+                        In a to-do list application, the controller functions would respond to the event of a
+                        user clicking on a check box and then inform the model that a task had been completed.
+                        The model would then update the information about that task.
+                      </p>
+                      <p>
+                        An MVC architecture can take a lot of code to implement, and many frameworks have 
+                        emerged that take care of much of the setup code for you.
+                        <b>
+                          One of the main features of MVC frameworks is data binding, which is the process of
+                          linking the model and view together.
+                        </b>
+                        One-way data binding is when a change in the model will automatically result in the view
+                        being updated. And two-way data binding is when a change in the view automatically 
+                        updates the model.
+                      </p>
+
+                    </article>
 
                     <!-- Question section -->
                     <div>
@@ -269,6 +378,7 @@
                     <p><a href="week4TeamWorkMine&group.html">Interact a Tic Toe Game - Event Listeners in Action</a></p>
                     <p><a href="oop.html">Interact with an OOP program</a></p>
                     <p><a href="hero.html">Interact Form Program</a></p>
+                    <p><a href="MVC/list.html">Interact an MVC pattern driven program</a></p>
                     <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
                     <p><b>NOTE:</b> Resources used include N2N</p>
                 
