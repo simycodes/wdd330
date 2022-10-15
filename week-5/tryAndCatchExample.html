@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Dom Program - Justice League</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>Try and Catch</h1>
+    </header>
+
+    <main>
+        <div class="child-container">
+           <h2>Using try and Catch for Error Exception Handling</h2>
+
+           <p>
+            If we suspect a piece of code will result in an exception, we can wrap it in a try block.
+            This will run the code inside the block(try) as normal, but if an exception occurs it will
+            pass the error object that is thrown onto a catch block.
+           </p>
+        </div>
+    </main>
+
+</body>
+
+<script>
+
+    function squareRoot(num){
+        return num * num;
+    }
+
+    function imaginarySquareRoot(number) {
+        'use strict';
+        try {
+            return String(squareRoot(number));
+        } catch(error) {
+            return squareRoot(-number)+'i';
+        }
+    }
+
+    console.log(imaginarySquareRoot(-49)) // no error message shown
+
+
+
+</script>
+
+</html>

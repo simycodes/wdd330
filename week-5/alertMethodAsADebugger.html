@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Dom Program - Justice League</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>Alert() and Console Methods as Debuggers</h1>
+    </header>
+
+    <main>
+        <div class="child-container">
+           <h2>Use JS file & Console to see output</h2>
+           <p>
+            Using alerts for debugging was the only option in the past, but JavaScript development 
+            has progressed since then and their use is discouraged for debugging purposes today.
+           </p>
+           <p>
+            Most modern JavaScript environments have a console object that provides a number of 
+            methods for logging information and debugging. It's not officially part of the
+            ECMAScript specification, but is well supported in all the major browsers and Node.js
+            </p>
+        </div>
+    </main>
+
+</body>
+
+<script>
+    function amIOldEnough(age){
+        if (age < 12) {
+            alert(age);
+            return 'No, sorry.';
+        } else if (age < 18) {
+            console.log("Only if you are accompanied by an adult.");
+            return 'Only if you are accompanied by an adult.';
+        }
+        else {
+            console.log("Yep, come on in!");
+            return 'Yep, come on in!';
+        }
+    }
+
+    amIOldEnough(21);
+    // function amIOldEnough(age){
+    //     Code with Error to show alert() getting the error
+    //     if (age = 12) {
+    //         alert(age);
+    //         console.log(age);
+    //         return 'No, sorry.';
+    //     } 
+    //     else if (age < 18) {
+    //         return 'Only if you are accompanied by an adult.';
+    //     }
+    //     else {
+    //         return 'Yep, come on in!';
+    //     }
+    // }
+
+    // amIOldEnough(21);
+    //<< 'No, sorry.'
+</script>
+
+</html>
