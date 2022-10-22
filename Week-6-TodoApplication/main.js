@@ -1,67 +1,5 @@
 
-// const availableTasks = [
-//     {
-// 	  id:new Date().getTime(),
-//       content: "Eating",
-// 	  completed: false,
-//     },
-//     {
-// 	  id:new Date().getTime(),
-//       content: "Coding",
-// 	  completed: false,
-//     },
-//      {
-// 	  id:new Date().getTime(),
-//       content: "Studying",
-// 	  completed: false,
-//     }
-// ]
-
-// Creating an empty array to hold all the tasks (as objects) that will be entered by the
-// user
-
-// This saves the availableTasks array as a JSON string using the string 
-// 'availableTasksInLocalStorage' // as the key.
-// localStorage.setItem('availableTasksInLocalStorage', JSON.stringify(availableTasks));
-
-// Retrieving availableTasks as a JavaScript object:
-// availableTasks = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
-// console.log(booksFromLocalStorage);
-
-// function getTasksFromLocalStorage() {
-//    // Get tasks array from local storage if its available/already set
-//    const availableTasks = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
-//    localStorage.setItem('availableTasksInLocalStorage', JSON.stringify(availableTasks));
-//    // Check if it contains data by checking its length
-//     if (availableTasks.length !== 0){
-//        console.log(availableTasks);
-//        console.log("Above are tasks from local storage");
-// 	   return tasks;
-//     }
-// 	else {
-// 		return 0;
-// 	}
-// }
-
-//let availableTasks = getTasksFromLocalStorage();
-
-availableTasks = [];
-console.log(availableTasks)
-// Get tasks array from local storage if its available/already set
-const tasks = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
-// Check if it contains data by checking its length
-console.log(tasks.length);
-console.log("Local Storage Working!!");
-
-if (tasks.length !== 0){
-   availableTasks = tasks;
-   console.log(tasks);
-   console.log("Above are tasks from local storage");
-   // availableTasks = [];
-   // localStorage.setItem('availableTasksInLocalStorage', JSON.stringify(availableTasks));
-}
-
-// FUNCTIONALITY TO LOAD ALL TASKS WHEN APP STARTS
+// FUNCTIONALITY TO LOAD ALL TASKS - ALL - ACTIVE - COMPLETED
 function loadAllTasks(availableTasks) {
   availableTasks.forEach(task => {
     // Create a Delete Button
@@ -166,24 +104,27 @@ function loadAllTasks(availableTasks) {
   return availableTasks.length;
 }
 
-// loadAllTasks(availableTasks);
-
 // FUNCTIONALITY TO ADD A NEW TASK
 const addNewTask = document.getElementById("submitTask");
 addNewTask.addEventListener("click",() => {
+	// Get the task value entered by the user
 	const task = document.getElementById("task").value;
+
+	// Get the array of tasks from the local storage if any or create a new tasks array
+	let availableTasks = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
+	if(availableTasks === null) {
+		availableTasks = [];
+	}
 
 	// Adding new task to the array of tasks
 	let taskAsAnObject = {};
 	taskAsAnObject.id = new Date().getTime();
 	taskAsAnObject.content = task;
 	taskAsAnObject.completed = false;
-	console.log(taskAsAnObject);
+	// console.log(taskAsAnObject);
 	
 	availableTasks.push(taskAsAnObject);
 	console.log(availableTasks);
-	// Store the new state of the array objects in the local storage
-	localStorage.setItem('availableTasksInLocalStorage', JSON.stringify(availableTasks));
 	
 	if (task !== ""){
 		// Create a Delete Button
@@ -262,6 +203,9 @@ addNewTask.addEventListener("click",() => {
 		    }
 	     })
 
+		// Store the new state of the array objects in the local storage
+		localStorage.setItem('availableTasksInLocalStorage', JSON.stringify(availableTasks));
+
 		//clearing up the input area
 		document.getElementById("task").value = "";
 
@@ -273,12 +217,16 @@ addNewTask.addEventListener("click",() => {
 });
 
 const getAllTasks = () => {
-	console.log("Working!");
+	// console.log("Working!");
+	let numberOfTasks = 0;
 	let tasksContainer = document.getElementById("tasks-container");
 	tasksContainer.innerHTML = "";
 
 	const availableTasks2 = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
-	let numberOfTasks = loadAllTasks(availableTasks2);
+	if(availableTasks2 !== null) {
+		numberOfTasks = loadAllTasks(availableTasks2);
+	}
+	
 	console.log(numberOfTasks);
 
 	let numberOfTasksLeft = document.getElementById("numberOfTasksLeft");
@@ -287,39 +235,48 @@ const getAllTasks = () => {
 
 const getActiveTasks = () => {
 	console.log("Working 2");
-	const availableTasks2 = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
-	let activeTasks = availableTasks2.filter((task)=>{
-         if(task.completed === false){
-			return task;
-		 }
-	})
+	let numberOfTasks = 0;
+	let activeTasks = [];
 	let tasksContainer = document.getElementById("tasks-container");
 	tasksContainer.innerHTML = "";
 
-	let numberOfTasks = loadAllTasks(activeTasks);
-
+	const availableTasks2 = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
+	if(availableTasks2 !== null) {
+		activeTasks = availableTasks2.filter((task)=>{
+			if(task.completed === false){
+				return task;
+			}
+		})
+		numberOfTasks = loadAllTasks(activeTasks);
+	}
+	
+	console.log(numberOfTasks);
 	let numberOfTasksLeft = document.getElementById("numberOfTasksLeft");
 	numberOfTasksLeft.innerHTML = `${numberOfTasks} tasks left`;
 }
 
 const getCompletedTasks = () => {
-	const availableTasks2 = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
 	console.log("Working 3");
-	let completedTasks = availableTasks2.filter((task)=>{
-         if(task.completed === true){
-			return task;
-		 }
-	})
+	let numberOfTasks = 0;
+	let completedTasks = [];
 	let tasksContainer = document.getElementById("tasks-container");
 	tasksContainer.innerHTML = "";
 
-	let numberOfTasks = loadAllTasks(completedTasks);
-
+	const availableTasks2 = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
+	if(availableTasks2 !== null) {
+		completedTasks = availableTasks2.filter((task)=>{
+			if(task.completed === true){
+			  return task;
+			}
+		})
+		numberOfTasks = loadAllTasks(completedTasks);
+	}
+	
+	console.log(numberOfTasks);
 	let numberOfTasksLeft = document.getElementById("numberOfTasksLeft");
 	numberOfTasksLeft.innerHTML = `${numberOfTasks} Tasks Completed`;
 }
 
-getAllTasks();
 const allTasks = document.getElementById("all");
 allTasks.addEventListener("click", getAllTasks);
 
@@ -329,33 +286,13 @@ activeTasks.addEventListener("click", getActiveTasks);
 const completedTasks = document.getElementById("completed");
 completedTasks.addEventListener("click", getCompletedTasks);
 
+// FUNCTIONALITY TO LOAD ALL TASKS WHEN APP STARTS
+function loadTasksOnStart() {
+	console.log("FUNCTIONALITY TO LOAD ALL TASKS WHEN APP STARTS IS WORKING")
+	let availableTasks = JSON.parse(localStorage.getItem('availableTasksInLocalStorage'));
+	if(availableTasks !== null) {
+		getAllTasks();
+	}
+}
 
-// document.getElementById("submitTask").addEventListener("click",function(){
-// 	const task = document.getElementById("task").value;
-// 	//console.log(favoriteChapterName);
-	
-// 	if (task !== ""){
-		
-// 		const deleteBtn = document.createElement("button");
-// 		deleteBtn.innerHTML = "\u274C";
-		
-// 		let newCreatedLiElement = document.createElement("li")
-// 		newCreatedLiElement.textContent = task;
-// 		newCreatedLiElement.appendChild(deleteBtn);
-		
-// 		document.getElementById("list-favorite-chapters").appendChild(newCreatedLiElement);
-		
-// 		//functionality to make the delete button remove the li element-favorite chapter
-// 		deleteBtn.addEventListener("click",function(){
-// 			document.getElementById("list-favorite-chapters").removeChild(newCreatedLiElement);
-// 		})
-
-// 		//clearing up the input area
-// 		document.getElementById("task").value = "";
-
-// 		//bringing focus to the input area
-// 		const favChapterNameFocusArea = document.getElementById("task");
-// 		favChapterNameFocusArea.focus();
-// 	}
-	
-// });
+loadTasksOnStart();
