@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wdd330 Week-1 Notes</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+        <main>
+            <h1 class="notes-heading">Week 7 Notes</h1>
+            <div class="child-container">
+    
+                <ol class="center-projects">
+                    <li><a href="furtherFunctions.html">Interact with Further Functions</a></li>
+                    <li><a href="ajax.html">Receive data from server(API) using AJAX and Fetch API Program</a></li>
+                    <li><a href="toDo.html">Send data using AJAX program - ToDo</a></li>
+                    <li><a href="usingFormData.html">using FormData - ToDo</a></li>
+                    <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+                </ol>
+    
+                <!-- Beginning of a main topic -->
+                <section>
+                    <h2>Further Functions and Ajax</h2>
+
+                    <!-- sub topic goes here -->
+                    <article>
+                      <h3><em>Further Functions</em></h3>
+                      <p>
+                        In JavaScript, functions are first-class objects, which means they can be passed around
+                        in the same way as every other value. They can have their own properties and methods,
+                        as well as accepting other functions as parameters and being returned by other functions.
+                      </p>
+                    </article>
+                    
+                    <!-- sub topic goes here -->
+                    <article>
+                       <h3><em>Functions that Define and Rewrite Themselves</em></h3>
+                       <p>
+                        The dynamic nature of JavaScript means that a function is able to not only call itself,
+                        but define itself, and even redefine itself. This is done by assigning an anonymous
+                        function to a variable that has the same name as the function.
+                       </p>
+
+                       <h3>Recursive Functions</h3>
+                       <p>
+                        A recursive function is one that invokes itself until a certain condition is met. 
+                        It is a useful tool to use when iterative processes are involved.
+                       </p>
+
+                       <h3>Event-driven Asynchronous Programming</h3>
+                       <p>
+                        Callbacks can be used to facilitate event-driven asynchronous programming.
+                        JavaScript is a single-threaded environment, which means only one piece of code will
+                        ever be processed at a time.
+                        This may seem like a limitation, but non-blocking techniques can be used to ensure that
+                        the program continues to run. 
+                        <b>Instead of waiting for an event to occur, a callback can be created that is invoked
+                         when the event happens. This means that the code is able to run out of order, or asynchronously.
+                        Events can be DOM events, such as the click and keyPress that we looked at in Chapter 7, 
+                        but they can also be events such as the completion of a file download, data returned 
+                        from a database, or the result of a complex operation.
+                        </b>
+                       </p>
+                       <p>
+                        By using callbacks, we ensure that waiting for these tasks to complete doesn't hold up
+                        the execution of other parts of the program. Once the task has been completed, the 
+                        callback will be invoked before returning to the rest of the program.
+                       </p>
+
+                       <h3>Promises</h3>
+                       <p>
+                        A promise represents the future result of an asynchronous operation. Promises don't do 
+                        anything that can't already be achieved using callbacks, but they help simplify the
+                        process, and avoid the convoluted code that can result from using multiple callbacks.
+                       </p>
+
+                       <p>
+                        When a promise is created, it calls an asynchronous operation and is then said to be pending.
+                        It remains in this state while the operation is taking place. At this stage, the promise
+                        is said to be unsettled. Once the operation has completed, the promise is said to have been settled.
+                        A settled promise can result in two different outcomes:
+                        Resolved ― the asynchronous operation was completed successfully.
+                        Rejected ― the asynchronous operation did not work as expected, wasn't successfully completed or resulted in an error.
+                        Both these outcomes will return any relevant data, and you can take the appropriate action based on the outcome of the promise.
+                       </p>
+
+                       <p>
+                        Once a promise has been settled, the then() method can be used to deal with the outcome.
+                        This method accepts two arguments. The first is a fulfillment function that is called 
+                        when the promise is resolved. Any data returned from the resolve() function will be 
+                        passed along to this function. The second argument is a rejection function that is called
+                        if the promise is rejected. Similar to the fulfillment function, the rejection function
+                        receives any data returned from the reject() function.
+                       </p>
+
+                       <h3>Async Functions</h3>
+                       <p>
+                        These functions are preceded by the async keyword and allow you to write asynchronous 
+                        code as if it was synchronous. This is achieved by using the await operator before an 
+                        asynchronous function.
+                       </p>
+
+                       <h3>Closures</h3>
+                       <p>
+                        A closure is a reference to a variable that was created inside the scope of another
+                        function, but is then kept alive and used in another part of the program.
+                       </p>
+                       <p>
+                        A closure is formed when a function returns another function that then maintains access to
+                        any variables created in the original functions scope.
+                       </p>
+
+                       <h3>Pure Functions</h3>
+                       <p><b>
+                        A key aspect of functional programming is its use of pure functions. 
+                        A pure function is a function that adheres to the following rules:
+                        1.The return value of a pure function should only depend on the values provided as 
+                        arguments. It doesn't rely on values from somewhere else in the program.
+                        2.There are no side-effects. A pure function doesn't change any values or data elsewhere 
+                        in the program. It only makes non-destructive data transformations and returns new values, 
+                        rather than altering any of the underlying data.
+                        3.Referential transparency. Given the same arguments, a pure function will always 
+                        return the same result.</b>
+                       </p>
+
+                       <p>
+                        In order to follow these rules, any pure function must have:
+                        At least one argument; otherwise the return value must depend on something other than the
+                        arguments of the function, breaking the first rule.
+                        A return value; otherwise there is no point in the function (unless it has changed 
+                        something else in the program, in which case, it is broken the 'no side-effects' rule).
+                       </p>
+
+                       <h3>Higher-Order Functions</h3>
+                       <p>
+                        Higher-order functions are functions that accept another function as an argument, or 
+                        return another function as a result, or both.
+                        Closures are used extensively in higher-order functions as they allow us to create a 
+                        generic function that can be used to then return more specific functions based on 
+                        its arguments. 
+                       </p>
+                    </article>
+
+                    <article>
+                        <h3><em>Ajax (Asynchronous JavaScript and XML)</em></h3>
+                        <p>
+                         <b>Ajax is a technique that allows web pages to communicate asynchronously with a server</b>,
+                         and it dynamically updates web pages without reloading. This enables data to be sent 
+                         and received in the background, as well as portions of a page to be updated in 
+                         response to user events, while the rest of the program continues to run.
+                        </p>
+                    
+                        <p>
+                          Ajax allows JavaScript to request resources from a server on behalf of the client.
+                          The resources requested are usually JSON data or small fragments of text or HTML
+                          rather than a whole web page.
+                        </p>
+
+                        <p>
+                          Ajax enables JavaScript to send requests and receive responses from a server,
+                          allowing content to be updated in real time.
+                        </p>
+
+                        <h4>No more XML, now we using JSON!</h4>
+                        <p>
+                          When the term Ajax was originally coined, XML documents were often used to return data. 
+                          But by far the most commonly used in Ajax nowadays is JSON, 
+                          which is more lightweight and easier to parse than XML. 
+                          <b>Ajaj is sometimes used to describe the technique,using JSON in place of XML</b>
+                          JSON also has the advantage of being natively supported in JavaScript, so you can deal 
+                          with JavaScript objects rather than having to parse XML files using DOM methods.
+                        </p>
+
+                        <p>
+                            With Ajax,users can see new content on web pages without having to refresh the page. 
+                            Shopping baskets can be updated in the background, 
+                            partial page content can be loaded seamlessly, and photo galleries can dynamically 
+                            load images.
+                            Today, it is unusual for Ajax not to be used when a partial web page update is required.
+                        </p>
+
+                        <h4>API</h4>
+                        <p>
+                            An application programming interface (API) is a collection of methods that allows external
+                            access to another program or service. These methods are owned by big websites that provide
+                            their data (to other websites) using these methods.These websites allow controlled access
+                            to their data via public APIs.
+                        </p>
+                        <p>
+                            A weather site, for example, might have an API that provides methods that return
+                            information about the weather in a given location, such as temperature, wind speed,
+                            and so on. This can then be used to display local weather data on a web page of another
+                            website.
+                        </p>
+                        <p>
+                            The information that is returned by APIs is often serialized as JSON. Since the data is
+                            being provided by an external site, CORS will have to be enabled in order to access
+                            information from an API.Some services may also require authentication in order to 
+                            access their APIs.
+                        </p>
+
+                        <h4>Fetch API</h4>
+                        <p>
+                            Fetch API, is currently a living standard for requesting and sending data 
+                            asynchronously across a network. The Fetch API uses promises to avoid callback hell.
+                        </p>
+                        <p>
+                            The Fetch API provides a global fetch() method that only has one mandatory argument,
+                             which is the URL of the resource you wish to fetch. 
+                             fetch() method returns a promise that resolves to the response returned from the URL that
+                             was provided as an argument.
+                             Because it is a promise, we can also use a catch statement at the end to deal with any
+                             errors that may occur.
+                        </p>
+                        <p>
+                            The Fetch API introduced the Response interface that deals with the object that is 
+                            returned when the promise is fulfilled.
+                            Each response object has an ok property that checks to see if the response is successful.
+                            The promise will only be rejected in the case of a network error, rather than something
+                            like a '404 page not found error', which is still considered a successful request
+                             in terms of the promise.
+                        </p>
+
+                        <h4>JSON Responses</h4>
+                        <p>
+                            JSON is probably the most common format for AJAX responses. The json() method is used 
+                            to deal with these by transforming a stream of JSON data into a promise that resolves
+                            to a JavaScript object.
+                        </p>
+
+                        <h4>Hypertext Transfer Protocol</h4>
+                        <p>
+                           The Web is built upon the Hypertext Transfer Protocol, or HTTP. When a client
+                           (usually a browser) makes a request to a server, it contains information about 
+                           which HTTP verb to use. HTTP verbs, also known as HTTP methods are the what HTTP 
+                           uses to tell the server what type of request is being made, which then determines
+                           the server will deal with the request.
+                        </p>
+                        <p>
+                            The five most commonly used verbs when dealing with resources on the web are:
+                            GET requests to retrieve resources
+                            POST requests, usually used to create a resource but can actually perform any task
+                            PUT requests to upsert, which means insert a resource or update it entirely
+                            PATCH requests to make partial updates to a resource
+                            DELETE requests to delete a resources.
+                        </p>
+                        <p>
+                            HTTP is a part of a browser request that holds the type of request being made and
+                            and tells it to the server(using a an HTTP method) so the server can know exactly how
+                            to respond to the request being made. 
+                        </p>
+
+
+                    </article>
+                    
+
+                    <!-- Question section -->
+                    <div>
+                        <h4>Questions</h4>
+
+                        <article>
+                            <h4><em> </em></h4>
+                            <p>
+                            
+                            </p>
+                        
+                            <p>
+                    
+                            </p>
+
+                        </article>   
+                    </div>
+                    
+                    <p><a href="furtherFunctions.html">Interact with Further Functions</a></p>
+                    <p><a href="ajax.html">Receive data from server(API) using AJAX and Fetch API Program</a></p>
+                    <p><a href="toDo.html">Send data using AJAX program - ToDo</a></p>
+                    <p><a href="usingFormData.html">using FormData - ToDo</a></p>
+                    <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                    <p><b>NOTE:</b> Resources used include N2N</p>
+                
+                </section>
+                
+            </div> 
+    
+        </main>
+      
+</body>
+</html>

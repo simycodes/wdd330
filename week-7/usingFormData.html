@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>AJAX</h1>
+    </header>
+
+    <main>
+        <div class="child-container">
+        <h2>Using the form data interface/class</h2>
+
+        <h4>Add a task in the form and then submit it, you should see a message in the console showing that task is saved</h4>
+           
+        <form id='todo' action='https://jsonplaceholder.typicode.com/todos' method='POST'>
+            <input type='text' name='task'  placeholder='Add Task' autofocus required>
+            <button type='submit'>Add Task</button>
+        </form>
+          
+        </div>
+    </main>
+
+</body>
+
+<script>
+// FormData
+// The Fetch API includes the FormData interface, which makes it much easier to submit
+// information in forms using Ajax.
+
+// If a form is passed to this constructor function as an argument, the form data 
+// instance will serialize all the data automatically, ready to be sent using Ajax.
+const data = new FormData();
+const form = document.forms['todo'];
+
+form.addEventListener('submit', addTask, false);
+
+// In this function, we create a new FormData instance using the FormData() constructor
+// function and provide the form as an argument. This does all the hard work of creating the task object for us.
+function addTask(event) {
+    event.preventDefault();
+    const task = new FormData(form);
+    const url = `http://echo.jsontest.com/id/1/title/${form.task.value}`;
+    const headers = new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    });
+    const request = new Request(url,
+    {
+        method: 'POST',
+        mode: 'cors',
+        header: headers,
+        body: JSON.stringify(task)
+    }
+    )
+
+    fetch(request)
+    .then( response => response.json() )
+    .then( data => console.log(`${data.title} saved with an id of ${data.id}`) )
+    .catch( error => console.log('There was an error:', error))
+
+}
+
+</script>
+
+</html>

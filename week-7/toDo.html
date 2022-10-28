@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Example - To Do List</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>Ajax Example - using Ajax to send information - To Do List</h1>
+    </header>
+
+    <main>
+        <div class="child-container">
+        <h4>Add a task in the form and then submit it, you should see a message in the console showing that task is saved</h4>
+           
+        <form id='todo' action='https://jsonplaceholder.typicode.com/todos' method='POST'>
+            <input type='text' name='task'  placeholder='Add Task' autofocus required>
+            <button type='submit'>Add Task</button>
+        </form>
+          
+        </div>
+    </main>
+
+    <script src='main2.js'></script>
+</body>
+
+
+</html>

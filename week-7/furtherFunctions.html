@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Further Functions</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>Interacting With Further Functions</h1>
+    </header>
+
+    <main>
+        <div class="child-container">
+           <h2>OOP.Use JS file & Console to see output</h2>
+          
+        </div>
+    </main>
+
+</body>
+
+<script>
+// 1.Function Properties and Methods and length of a function = number of its arguments
+
+function square(x) {
+    return x*x;
+}
+console.log(square.length);  // << 1
+
+// 2.Call and Apply Methods
+// The call() method can be used to set the value of this inside a function to an object
+// that is provided as the first argument.
+
+function sayHello(){
+    return `Hello, my name is ${ this.name }`;
+}
+
+function sayHello2(greeting='Hello'){
+    return `${ greeting }, my name is ${ this.name }`;
+}
+
+const clark = { name: 'Clark' };
+const bruce = { name: 'Bruce' };
+
+console.log(sayHello.call(clark)); // << 'Hello, my name is Clarke'
+console.log(sayHello.call(bruce)); // << 'Hello, my name is Bruce'
+
+// If the function that’s called requires any parameters, these need to be provided as
+// arguments after the first argument, which is always the value of this
+console.log(sayHello2.call(clark, 'How do you do')); // << 'How do you do, my name is Clark'
+console.log(sayHello2.call(bruce)); // << 'Hello, my name is Bruce'
+
+// 3.Immediately Invoked Function Expressions
+// An Immediately Invoked Function Expression – or IIFE – (pronounced 'iffy') is an 
+// anonymous function that, as the name suggests, is invoked as soon as it’s defined. 
+// This is easily achieved by placing parentheses at the end of the function definition
+(function(){
+const temp = 'World';
+console.log(`Hello ${temp}`);
+})();
+// << 'Hello World'
+
+// 4.Functions that Define and Rewrite Themselves
+function party(){
+    console.log('Wow this is amazing!');
+    party = function(){
+        console.log('Been there, got the T-Shirt');
+    }
+}
+
+// Every time the function is called after the first time, it will log the message
+// 'Been there, got the T-Shirt'
+console.log(party()); // << 'Wow this is amazing!'
+console.log(party()); // << 'Been there, got the T-Shirt'
+console.log(party()); // << 'Been there, got the T-Shirt'
+
+// Difference to notice with redefining functions
+function party(){
+    console.log('Wow this is amazing!');
+    party = function(){
+        console.log('Been there, got the T-Shirt');
+    }
+}
+
+const beachParty = party; // note that the party function has not been invoked
+
+beachParty(); // the party() function has now been redefined, even though it hasn't been called explicitly
+// << 'Wow this is amazing!'
+
+party(); 
+// << 'Been there, got the T-Shirt'
+
+beachParty(); // but this function hasn't been redefined
+// << 'Wow this is amazing!'
+
+beachParty(); // no matter how many times this is called it will remain the same
+// << 'Wow this is amazing!'
+// If any properties have previously been set on the function, these will be lost when
+// the function redefines itself.
+
+// 5.Recursive Functions
+function factorial(n) {
+    if (n === 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+// 6.Callbacks for Event-driven Asynchronous Programming
+function wait(message, callback, seconds){
+    setTimeout(callback,seconds * 1000);
+    console.log(message);
+}
+
+function selfDestruct(){
+    console.log('BOOOOM!');
+}
+
+wait('This tape will self-destruct in five seconds ... ', selfDestruct, 5);
+console.log('Hmmm, should I accept this mission or not ... ?');
+
+// << 'This tape will self-destruct in five seconds ... '
+// << 'Hmmm, should I accept this mission or not ... ? '
+// << 'BOOOOM!'
+
+// Notice,even if time is set to 0 the callback in the wait() function is still invoked 
+// last, We would have expected the callback to have been invoked 
+// immediately, but a callback always has to wait for the current execution stack to
+// complete before it’s invoked.
+
+// 7.Creating and using a Promise
+// General syntax of a promise
+const promise = new Promise((resolve, reject) => {
+    // initialization code goes here
+    if (success) {
+        resolve(value);
+    } 
+    else {
+        reject(error);
+    }
+});
+
+// Example using a Promise
+const dice = {
+    sides: 6,
+    roll() {
+        return Math.floor(this.sides * Math.random()) + 1;
+    }
+}
+
+// This promise uses the dice.roll() method as the asynchronous operation and considers 
+// rolling a 1 as a failure, and any other number as a success
+const promise2 = new Promise((resolve,reject) => {
+    const n = dice.roll();
+    setTimeout(() => {
+        (n > 1) ? resolve(n) : reject(n);
+    }, n*1000);
+});
+// Once a promise has been settled, the then() method can be used to deal with the outcome.
+// This method accepts two arguments. The first is a fulfillment function that’s called when 
+// the promise is resolved.Any data returned from the resolve() function will be passed here.
+// The second argument is a rejection function that’s called if the promise is rejected. 
+promise2.then( result => console.log(`Yes! I rolled a ${result}`), result => console.log(`Drat! ... I rolled a ${result}`) );
+promise2.then( result => console.log(`I rolled a ${result}`) ).catch( result => console.log(`Drat! ... I rolled a ${result}`) );
+
+// Notice that both the resolve() and reject() functions return the value of the n variable.
+// This can be used when dealing with the outcome of the promise once it is been settled.
+
+// 8. Async Functions
+// Example General Syntax - game login as example
+async function loadGame(userName) {
+    try {
+        const user = await login(userName);
+        const info = await getPlayerInfo (user.id);
+        // load the game using the returned info
+    }
+    catch (error){
+        throw error;
+    }
+}
+
+// 9.Functions returning functions
+
+function greeter(greeting = 'Hello') {
+    return function() {
+        console.log(greeting);
+    }
+}
+
+const englishGreeter = greeter();
+englishGreeter(); // << Hello
+
+const frenchGreeter = greeter('Bonjour');
+frenchGreeter(); // << Bonjour
+
+
+const germanGreeter = greeter('Guten Tag');
+germanGreeter(); // << Guten Tag
+
+
+// 10. Closures
+// A closure is a reference to a variable that was created inside the scope of another
+// function, but is then kept alive and used in another part of the program.
+// A closure is formed when the inner function is returned by the outer function,
+// maintaining access to any variables declared inside the enclosing function.
+function outer() {
+    const outside = 'Outside!';
+    function inner() {
+        const inside = 'Inside!';
+        console.log(outside);
+        console.log(inside);
+    }
+    return inner;
+}
+
+// We can now assign a variable to the return value of the outer() function
+// The variable closure now points to the inner() function that is returned by the 
+// outer() function.
+const closure = outer();
+
+// What makes this a closure is that it now has access to the variables created inside
+// both the outer() and inner() functions, as we can see when we invoke it:
+closure(); // << Outside! Inside!
+
+// Practical example on closures
+function closure1() {
+    const a = 1.8;
+    const b = 32;
+    return c => c * a + b;
+}
+
+const toFahrenheit = closure1();
+toFahrenheit(30); // << 86
+// This new function can then be invoked with its own argument, but the values of a and b
+// from the original function are still kept 'alive':
+
+// 11. Example of a Pure Function
+const number = 42;
+
+function pureAdd(x,y) {
+    return x + y;
+}
+
+result = pureAdd(number,10); // << 52
+console.log(result);
+
+</script>
+
+</html>
