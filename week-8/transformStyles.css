@@ -1,0 +1,44 @@
+h2 span {
+    font-size: 30px;
+    color: #999999;
+    display: inline-block;
+    /* TRANSITIONS */
+    transition-property: transform;
+    -webkit-transition-property: -webkit-transform;
+    transition-duration: 0.2s;
+    /* -webkit supports older WebKit browsers,  */
+}
+
+h2:hover span {
+    color: #484848;  
+    transform: translate(40px,-40px) scale(1.5) rotate(10deg);
+    /* transform: translateX(40px); */
+    /* transform: translateY(-40px); */
+    /* transforms are applied in the order provided. */
+}
+
+h3 {
+    transition-property: transform, color;
+    transition-duration: 0.3s, 0.5s;
+    transition-timing-function: ease-out;/* ease, linear, ease-in, ease-out, or ease-in-out */
+    transition-delay: 0.6s;
+    /* transition-timing-function controls the pace of the transition in even more granular detail. */
+    /* transition: transform 0.2s ease-out 50ms; */
+}
+
+h3:hover {
+    color: #484848;  
+    transform: rotate(-30deg);
+}
+
+h4:hover {
+    transform: skew(15deg, 4deg);
+}
+
+
+
+
+/* Note that you shouldn’t declare a new transform: because of the cascade, a second 
+transform would override the first. To declare multiple transformations, provide a
+space-separated list of transform functions. We simply add our scale to the end of 
+that space-separated list. */

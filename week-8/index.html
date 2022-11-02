@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wdd330 Week-1 Notes</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+        <main>
+            <h1 class="notes-heading">Week 8 Notes</h1>
+            <div class="child-container">
+    
+                <ol class="center-projects">
+                    <li><a href="transforms.html">Interacting With CSS3 Transforms and Transitions</a></li>
+                    <li><a href="animations.html">Interacting With Animations</a></li>
+                    <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+                </ol>
+    
+                <!-- Beginning of a main topic -->
+                <section>
+                    <h2>CSS3 Transforms and Transitions</h2>
+
+                    <!-- sub topic goes here -->
+                    <article>
+                      <h3><em>Transforms</em></h3>
+                      <p>
+                        The CSS3 transform property lets you lets you <b>translate, scale rotate, scale, and/or skew any
+                        element on the page.</b>
+                      </p>
+                      <p>
+                        The value of the transform property is one or more transform functions (separated by spaces)
+                        that will be applied in the order they're provided.
+                      </p>
+
+                      <h4>Translation</h4>
+                      <p>
+                        Translation functions allow you to move elements left, right, up, or down. 
+                        When you employ a translation function, you're moving elements without impacting 
+                        the flow of the document.
+                      </p>
+                      <p>
+                        The translate(x,y) function moves an element x from the left, and y from the top.
+                        If you only want to move an element vertically or horizontally, you can use the 
+                        translateX() or translateY() functions respectively.
+                        Transforms dont work on inline elements. But that's easy enough to fix. We'll just
+                        add display: inline-block; to our span:
+                      </p>
+
+                      <h4>Scaling</h4>
+                      <p>
+                        The scale(x,y) function scales an element by the defined factors horizontally then 
+                        vertically. If only one value is provided, it will be used for both the x and y values,
+                        growing or shrinking your element or pseudo-element while maintaining the original
+                        aspect ratio. For example, scale(1) would leave the element the same size, scale(2)
+                        would double its proportions, scale(0.5) would halve them, and so on.
+                      </p>
+                      <p>
+                        As with translate, you can also use the scaleX(x) or scaleY(y) functions.
+                        A scaled element will grow outwards from or shrink inwards towards its center; in other 
+                        words, the elements center will stay in the same place as its dimensions change. 
+                      </p>
+                      <p>
+                        Note that you shouldn't declare a new transform: because of the cascade, a second 
+                        transform would override the first. To declare multiple transformations, provide a 
+                        space-separated list of transform functions. We simply add our scale to the end of
+                        that space-separated list.
+                        NOTE also:Using the scale function on inline text can have unwanted results.Use it
+                        more on block elements.then arrangement of text wont be affected much.
+                        Transforms are applied in the order provided and The order of transform functions does
+                        matter: if you rotate before translating, your translate direction will be on the 
+                        rotated axis.
+                      </p>
+
+                      <h4>Rotation</h4>
+                      <p>
+                        The rotate() function rotates an element around the point of origin by a specified angle
+                        value. As with scale, by default the point of origin is the elements center. Generally,
+                        angles are declared in degrees, with positive degrees moving clockwise and negative 
+                        moving counterclockwise. 
+                      </p>
+
+                      <h4>Skew</h4>
+                      <p>
+                        The skew(x,y) function specifies a skew along the x and y axes. As you'd expect, the 
+                        x specifies the skew on the x axis, and the y specifies the skew on the y axis. 
+                        If the second parameter is omitted, the skew will only occur on the x axis.
+                      </p>
+
+                    </article>
+                    
+                    <!-- sub topic goes here -->
+                    <article>
+                       <h3><em>Transitions</em></h3>
+                       <p>
+                        <b>
+                          Transitions allow the values of CSS properties to change over time, essentially providing
+                          simple animations. For example, if a link changes color on hover, you can have it 
+                          gradually fade from one color to the other instead of a sudden change. 
+                        </b>
+                         They're both transitions, but with the CSS transition property the color transition can
+                         be gradual.
+                       </p>
+
+                       <p>
+                        NOTE:With transitions
+                        It is important to include a pre-state and a post-state. For example, to transition 
+                        from rectangular corners to rounded corners, set the original state to
+                        border-radius: 0;And In itself, the transition-property property has no effect; that's 
+                        because we still need to specify the duration of the transition.
+                        <b>
+                            200ms (0.2s) is generally considered the optimum time for a transition: anything 
+                            slower will make the website seem slow, drawing generally unwanted attention to what 
+                            was supposed to be a subtle effect. Anything faster may be too subtle.
+                        </b>
+                       </p>
+                    </article>
+
+                     <article>
+                       <h3><em>Animations</em></h3>
+                       <p>
+                        <b>
+                           Transitions animate elements over time; however, they're limited in what they can do.
+                           CSS animations, unlike transitions, allow you to control each step of an animation via
+                           keyframes.
+                        </b>
+                       </p>
+
+                       <p>
+                        A keyframe is a snapshot that defines a starting or end point of any smooth transition. 
+                        With CSS transitions, we're essentially limited to defining a first and a last keyframe.
+                        CSS animations allow us to add any number of keyframes in between, to guide our animation
+                        in more complex ways.
+                       </p>
+
+                       <p>
+                          Use animations and transitions where it makes sense, enhancing the user experience—and 
+                          skip it everywhere else.
+                       </p>
+                    </article>
+                    
+
+                    <!-- Question section -->
+                    <div>
+                        <h4>Questions</h4>
+
+                        <article>
+                            <h4><em> </em></h4>
+                            <p>
+                            
+                            </p>
+                        
+                            <p>
+                    
+                            </p>
+
+                        </article>   
+                    </div>
+                    
+                    <p><a href="transforms.html">Interacting With CSS3 Transforms and Transitions</a></p>
+                    <p><a href="animations.html">Interacting With Animations</a></p>
+                    <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                    <p><b>NOTE:</b> Resources used include HTML5 & CSS3 for the Real World: 2nd Edition</p>
+                
+                </section>
+                
+            </div> 
+    
+        </main>
+      
+</body>
+</html>
