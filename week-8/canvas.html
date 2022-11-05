@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+     <!-- styles for the transforms -->
+    <link href="canvas.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <header>
+        <h1 id='title'>Interacting With Canvas</h1>
+    </header>
+
+    <main>
+        <canvas id="myCanvas" class="myCanvas" width="200" height="200">
+                Sorry! Your browser doesn't support Canvas.
+        </canvas>
+
+        
+        <div class="child-container">
+           
+        </div>
+    </main>
+
+</body>
+
+<script>
+
+var canvas = document.getElementById("myCanvas");
+// Once we’ve stored our canvas element in a variable, we then set up the canvas’s context.
+// The context is the place where your drawing is rendered.
+// Currently, there’s only wide support for drawing to a two-dimensional context.
+
+// We obtain our drawing context by calling the getContext method and passing it the 
+// string "2d", since we’ll be drawing in two dimensions:
+var canvas = document.getElementById("myCanvas");
+var context = canvas.getContext("2d");
+// The object that’s returned by getContext is an instance of CanvasRenderingContext2D or
+// the context object.A context is created from an element being drawn on.
+
+
+// To saturate your brush with paint before painting, you must do the same, and we do so 
+// with the strokeStyle or fillStyle properties.
+// Both strokeStyle and fillStyle are set on a context object, and both take one of three
+// values: a string representing a color, a CanvasGradient object, or a CanvasPattern object.
+context.strokeStyle = "red";
+
+// We must also define the fill color
+context.fillStyle = "rgba(0, 0, 255, 0.5)";   // "blue";
+
+// But now, we’ll draw a rectangle. We can do this by calling the fillRect and strokeRect 
+// methods. Both of these methods take the X and Y coordinates where you want to begin 
+// drawing the fill or the stroke,  and the width and height of the rectangle. 
+context.fillRect(10, 10, 100, 100);   
+context.strokeRect(10, 10, 100, 100);
+
+
+
+
+
+
+</script>
+
+
+</html>

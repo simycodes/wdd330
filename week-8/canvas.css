@@ -1,0 +1,7 @@
+/* Canvas has no default styling, so it’s difficult to see where it is on the page unless 
+you give it some kind of border */
+
+.myCanvas {
+    margin-left:100px;
+    border: dotted 2px black;
+}
