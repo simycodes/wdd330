@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Justice League</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+     <!-- styles for the transforms -->
+    <link href="styles.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <h1 id='title'>Justice League</h1>
+    </header>
+
+    <main>
+        <div>
+            <ul id='roster'>
+                <li class='hero'>Superman</li>
+                <li class='vigilante hero' id='bats'>Batman</li>
+                <li class='hero'>Wonder Woman</li>
+            </ul>
+
+            <br><br>
+            <h4>Implement power of innerHTML with content below</h4>
+            <ul id='roster2'>
+                <li class='hero1'>Superman</li>
+                <li class='vigilante1 hero1' id='bats1'>Batman</li>
+                <li class='hero1'>Wonder Woman</li>
+            </ul>
+ 
+            <br><br><br><br>
+            <p>
+                NOTE: Using the console for DOM manipulation
+                Pressing TAB will autocomplete any methods and should show you a list of possible methods
+                Pressing the UP arrow key will select the previous command entered.
+            </p>
+        </div>  
+    </main>
+    
+    
+</body>
+<script>
+        const ulContainer = document.getElementById('roster');
+
+        const listItems = document.getElementsByTagName('li');
+
+        console.log(listItems[0]);
+        // << <li class='hero'>Superman</li>
+
+        console.log(listItems[1]);
+        // << <li class='vigilante hero' id='bats'>Batman</li>
+
+        console.log(listItems[2]);
+        // << <li class='hero'>Wonder Woman</li>
+
+        const heroes = document.getElementsByClassName('hero');
+        console.log(heroes.length);
+        // << 3
+
+        // Query Selector
+        const batman = document.querySelector('#bats');
+        console.log(batman);
+
+        // Query SelectorAll
+        const allHeroes = document.querySelectorAll('.hero');
+        console.log(allHeroes);
+
+        // Further Query Selector
+        const wonderWoman = document.querySelector('li:last-child');
+        console.log(wonderWoman);
+
+        // The querySelector() method can be called on any element, rather than just document.
+        const ul = document.querySelector('ul#roster');
+        // Now we can use the querySelector() method on ul
+        const batman1 = ul.querySelector('li#bats')
+        console.log(batman1);
+
+        // DOM PROPERTIES
+        // childNodes Property
+        const heroes1 = document.getElementById('roster');
+        // The childNodes property is a list of all the nodes that are children of the node
+        // concerned.
+        console.log(heroes1.childNodes);
+
+        // Children Property
+        // The children property only returns any element nodes that are children of that node,
+        // so will ignore any text nodes
+        console.log(heroes1.children) // this will only contain list items
+        // << HTMLCollection [<li class="hero">, <li id="bats">, <li class="hero">, <li class="hero">] (4)
+
+        console.log(heroes1.children.length) // << 3
+
+        // The firstChild property returns the first child of a node:
+        console.log(heroes1.firstChild); // text
+
+        // The lastChild property returns the last child of a node:
+        console.log(heroes1.lastChild); // #text " "
+
+        // The parentNode property returns the parent node of an element.
+        const wonderWoman1 = document.querySelector('ul#roster li:last-child');
+        console.log(wonderWoman1.parentNode); // << <ul id='roster'>…</ul>
+
+        // The nextSibling property returns the next adjacent node of the same parent.
+        console.log(wonderWoman.nextSibling); // #text " "
+
+        // Finding the Value of a Node
+        console.log(wonderWoman.textContent); // << "Wonder Woman"
+
+        // Getting An Element’s Attributes
+        console.log(wonderWoman.getAttribute('class')); // "hero"
+
+        // Setting An Element’s Attributes
+        wonderWoman.setAttribute('id','amazon');
+        console.log(wonderWoman.getAttribute('id'));  // << 'amazon'
+
+        // The classList Property - This is a list of all the classes an element has.
+        // The add method of classList property
+        wonderWoman.classList.add('warrior');
+        console.log(wonderWoman.className);  // << "hero warrior"
+
+        // The remove method will remove a specific class from an element
+        wonderWoman.classList.remove('warrior');
+        console.log(wonderWoman.className);
+
+        // The toggle method is a particularly useful method that will add a class if an
+        // element doesn’t have it already, and remove the class if it does have it
+        wonderWoman.classList.toggle('hero'); // will remove the 'hero' class
+        wonderWoman.classList.toggle('sport'); // will add the 'hero' class back
+
+        // The contains method will check to see if an element has a particular class:
+        wonderWoman.classList.contains('sport'); // << true
+
+        // CREATING DYNAMIC MARKUP
+        // Process 1
+        const flash = document.createElement('li');
+        const flashText = document.createTextNode('Flash');
+        flash.appendChild(flashText);
+
+        // Process 2
+        const flash2 = document.createElement('li');
+        flash2.textContent = 'Flash2';
+
+        // A Function To Create Elements
+        function createElement (tag,text) {
+            const el = document.createElement(tag);
+            el.textContent = text;
+            return el;
+        }
+
+        // Creating a new element using a function
+        const aquaman = createElement('li','Aquaman');
+        const spiderMan = createElement('li','Spiderman');
+        console.log(aquaman);
+
+        // Adding Elements to the Page - html document
+        ulContainer.appendChild(flash);
+        ulContainer.appendChild(spiderMan);
+
+        // The insertBefore() method will place a new element before another element in the 
+        // markup. It’s important to note that this method is called on the parent node.
+        ulContainer.insertBefore(aquaman,wonderWoman);
+
+        // An element can be removed from a page using the removeChild() method. 
+        ulContainer.removeChild(spiderMan);
+
+        // Because we have a reference to the element, we can easily put it back into the document if we need to:
+        ulContainer.appendChild(spiderMan);
+
+        // The replaceChild() method can be used to replace one node with another. 
+        const h1 = document.getElementById('title');
+        const oldText = h1.firstChild;
+        const newText = document.createTextNode('Justice League of America');
+        h1.replaceChild(newText,oldText);
+        // All above code can be as code below in 1 line
+        document.getElementById('title').textContent = "Justice League of America";
+        h1.textContent = 'America';
+        h1.innerHTML = 'Justice League of America';
+        
+
+        // innerHTML
+        // It returns all the child elements of an element as a string of HTML
+        const ulContainer2 = document.getElementById('roster2');
+        console.log(ulContainer2.innerHTML);
+
+        // This will now remove all the child elements of the <ul> element and replace them
+        // with the string of HTML that was provided
+        ulContainer2.innerHTML = '<li>Harley Quinn</li><li>Deadshot</li><li>Killer Croc</li><li>Enchantress</li><li>Captain Boomerang</li><li>Katana</li><li>Slipknot</li>';
+
+        // Adding CSS to element using DOM
+        const heroes3 = document.getElementById('roster');
+        const superman = heroes3.children[0];
+
+        superman.style.border = "red 2px solid";
+
+        // Camel Case in CSS properties - background-color becomes backgroundColor
+        superman.style.backgroundColor = 'blue';
+        // superman.style['background color'] = 'blue';
+
+
+
+    </script>
+</html>
+
+
+
+
+
+
+
+

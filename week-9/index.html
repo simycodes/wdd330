@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wdd330 Week-1 Notes</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+        <main>
+            <h1 class="notes-heading">Week 9 Notes</h1>
+            <div class="child-container">
+    
+                <ol class="center-projects">
+                    <li><a href="heroes.html">interact with a DOM application</a></li>
+                    <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+                </ol>
+    
+                <!-- Beginning of a main topic -->
+                <section>
+                    <h2>The Document Object Model(DOM)</h2>
+
+                    <!-- sub topic goes here -->
+                    <article>
+                      <h3><em>DOM</em></h3>
+                      <p>
+                        The Document Object Model (DOM) allows you to access elements of a web page and enable
+                        interaction with the page by adding and removing elements, changing the order, content
+                        and attributes of elements, and even altering how they are styled.
+                        <b>
+                          The DOM represents an HTML document as a network of connected nodes that form a tree-like
+                          structure.
+                          We can use JavaScript to access and modify different parts of a web page using a special
+                          built-in object called document.
+                        </b>
+                      </p>
+
+                      <p>
+                        Node lists are array-like objects, but they are not arrays. You can access each item
+                        using index notation. For example, document.images[0] will return the first image in 
+                        the node list of all the images in the document.
+                        They also have a length property, which can be used to iterate through every element
+                        using a for loop, like so.
+                      </p>
+
+                      <h4>Common Methods used to access Elements</h4>
+                      <p>
+                        Common methods used to access Elements on a web page include
+                        <b>
+                            getElementById(), getElementsByTagName(), getElementsByClassName(), 
+                            document.querySelector() method (allows you to use CSS notation to find the first
+                            element in the document that matches a CSS selector provided as an argument),
+                            document.querySelectorAll()
+                        </b>
+                      </p>
+
+                      <h4>Getting and Setting Attributes</h4>
+                      <p> 
+                        All HTML elements have a large number of possible attributes such as 'class', 'id',
+                         src, and 'href'. 
+                         The DOM has numerous getter and setter methods that can be used to view, add, remove or 
+                         modify the value of any of these attributes.
+                      </p>
+                      <p>
+                        These methods include :
+                        The getAttribute() method which returns the value of the attribute provided as an argument.
+                        The setAttribute can change the value of an element's attributes. It takes two arguments:
+                        the attribute that you wish to change, and the new value of that attribute.
+                        If an element does not have an attribute, the setAttribute method can be used to add it to the element.
+                      </p>
+
+                      <h4>The classList Property</h4>
+                      <p>
+                        The classList property is a list of all the classes an element has. It has a number of
+                        methods that make it easier to modify the class of an element.These include 
+                        classList.add() and classList.remove(), classList.toggle() and classList.contains methods;
+                      </p>
+                      <p>
+                        The toggle method is a particularly useful method that will add a class if an element 
+                        doesn't have it already, and remove the class if it does have it. It returns true if 
+                        the class was added and false if it was removed. 
+                      </p>
+
+                      <p>
+                        The contains method will check to see if an element has a particular class:
+                      </p>
+
+                      <h4>Creating Dynamic Markup</h4>
+                      <p>Following are steps to follow when creating a new element with text content 
+                        1.Create the element node 2.Create the text node
+                        3.Append the text node to the element node
+                      </p>
+
+                      <h4>A Function To Create Elements</h4>
+                      <p>
+                        <pre>
+                            function createElement (tag,text) {
+                                const el = document.createElement(tag);
+                                el.textContent = text;
+                                return el
+                            }
+                        </pre>
+
+                        The insertBefore() method will place a new element before another element in the markup.
+                        It's important to note that this method is called on the parent node. 
+                      </p>
+
+                      <p>
+                        An element can be removed from a page using the removeChild() method. This method is 
+                        called on the parent node and has a single parameter, which is the node to be removed
+                      </p>
+
+                      <h4>innerHTML property</h4>
+                      <p>
+                        It returns all the child elements of an element as a string of HTML. If an element 
+                        contains lots of other elements, all the raw HTML is returned. 
+                      </p>
+                      <p>
+                        The power of the innerHTML property becomes even more apparent if you want to insert
+                        a large amount of HTML into the document. Instead of creating each element and text 
+                        node individually, you can simply enter the raw HTML as a string. The relevant nodes
+                        will then be added to the DOM tree automatically.
+                      </p>
+
+                      <h4>Updating CSS using DOM</h4>
+                      <p>
+                        Every element node has a style property. This can be used to dynamically modify the 
+                        presentation of any element on a web page.
+                      </p>
+                      <p>
+                        Any CSS property names that are separated by dashes must be written in camelCase 
+                        notation, so the dash is removed and the next letter is capitalized because dashes are
+                        not legal characters in property names.
+                        For example, the CSS property background-color becomes backgroundColor
+                      </p>
+
+                      <p>
+                        One particularly useful CSS property often employed is the display property.
+                        This can be used to make elements disappear and reappear on the page as needed by 
+                        changing from display:block to display:none
+                      </p>
+
+                      <p><b>NOTE: Using dynamic css styling</b>
+                      While it may seem useful to be able to edit the styles of elements on the fly like this,
+                      it is much better practice to dynamically change the class of an element and keep the
+                      relevant styles for each class in a separate stylesheet.
+                      </p>
+
+                      <p>
+                        <pre>
+                        Instead of using 
+                        
+                        superman.style.border('red 2px solid');
+
+                        A better alternative would be to add a class of 'highlighted':
+
+                        superman.classList.add('highlighted');
+
+                        And then add the following CSS in a separate stylesheet file:
+
+                          .highlighted{
+                              border: red 2px solid;
+                          }
+                          </pre>
+                      </p>
+
+                      <p>
+                        This would give more flexibility if it was later decided to change the look of the 
+                        highlighted elements. It could simply be changed at the CSS level, rather than having 
+                        to dig around in the JavaScript code. 
+                      </p>
+
+                    </article>
+                    
+                    <!-- sub topic goes here -->
+                    <article>
+                       <h3><em>HTML5 APIs </em></h3>
+
+                       <h4>The data- Attribute</h4>
+                       <p>
+                        <b>
+                          The data- attribute is a way of embedding data in a web page using custom attributes
+                          that are ignored by the browser.
+                          The data- attribute gives more direct information about an element as they 
+                          provide a convenient way of adding data directly into the HTML markup
+                          data- attributes have a sole purpose of being used by a JavaScript program.
+                          This means they're perfect for adding data on an element that can be used as a hook 
+                          that the program utilizes to access information about a particular element on the page.
+                        </b>
+                       </p>
+
+                       <p>
+                        The name of data- attributes must alway start with data- and can
+                        contain only lowercase letters, numbers, hyphens, dots, colons or underscores.
+                        They can also include an optional string value.
+                       </p>
+
+                       <p>
+                        Good examples include: data-dropdown  and data-rating = '5' 
+                       </p>
+
+                       <p>
+                        <b>The information contained in the attributes can be used to identify particular elements.
+                          And The values of the attributes can also be used to filter different elements.
+                        </b>
+                        For example, all the elements with an attribute of data-dropdown could be identified 
+                        as dropdown menu.
+                       </p>
+
+                       <p>
+                        <b>
+                          Each element has a dataset property that can be used to access any data- attributes it contains.
+                        </b>
+                       </p>
+                    </article>
+                    
+
+                    <!-- Question section -->
+                    <div>
+                        <h4>Questions</h4>
+
+                        <article>
+                            <h4><em> </em></h4>
+                            <p>
+                            
+                            </p>
+                        
+                            <p>
+                    
+                            </p>
+
+                        </article>   
+                    </div>
+                    
+                    <p><a href="heroes.html">interact with a DOM application</a></p>
+                    <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                    <p><b>NOTE:</b> Resources used include N2N</p>
+                
+                </section>
+                
+            </div> 
+    
+        </main>
+      
+</body>
+</html>
