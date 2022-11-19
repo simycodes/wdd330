@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Displaying Validation Errors Using JS</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+     <!-- styles for the transforms -->
+    <link href="styles.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <h1 id='title'>Displaying Validation Errors Using JS</h1>
+    </header>
+
+    <main>
+        <div>
+           <form>
+
+                <label for="mail">
+                    I would like you to provide me with an e-mail address:
+                </label>
+
+                <input type="email" id="mail1" name="mail" />
+                <button>Submit</button>
+
+          </form>
+
+          <form novalidate>
+            <p>
+                <label for="mail">
+                <span>Please enter an email address:</span>
+                <input type="email" id="mail" name="mail" required minlength="8" />
+                <span class="error" aria-live="polite"></span>
+                </label>
+            </p>
+            <button>Submit</button>
+           </form>
+        </div>  
+    </main>
+    
+    
+</body>
+<script>
+
+    const email1 = document.getElementById("mail1");
+
+    email1.addEventListener("input", (event) => {
+    if (email1.validity.typeMismatch) {
+        email1.setCustomValidity("I am expecting an e-mail address!");
+        email1.reportValidity();
+    } else {
+        email1.setCustomValidity("");
+    }
+    });
+
+
+// There are many ways to pick a DOM node; here we get the form itself and the email
+// input box, as well as the span element into which we will place the error message.
+const form = document.querySelector("form");
+const email = document.getElementById("mail");
+const emailError = document.querySelector("#mail + span.error");
+
+email.addEventListener("input", (event) => {
+  // Each time the user types something, we check if the
+  // form fields are valid.
+
+  if (email.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    emailError.textContent = ""; // Reset the content of the message
+    emailError.className = "error"; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    showError();
+  }
+});
+
+form.addEventListener("submit", (event) => {
+  // if the email field is valid, we let the form submit
+  if (!email.validity.valid) {
+    // If it isn't, we display an appropriate error message
+    showError();
+    // Then we prevent the form from being sent by canceling the event
+    event.preventDefault();
+  }
+});
+
+function showError() {
+  if (email.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+    emailError.textContent = "You need to enter an e-mail address.";
+  } else if (email.validity.typeMismatch) {
+    // If the field doesn't contain an email address,
+    // display the following error message.
+    emailError.textContent = "Entered value needs to be an e-mail address.";
+  } else if (email.validity.tooShort) {
+    // If the data is too short,
+    // display the following error message.
+    emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+  }
+
+  // Set the styling appropriately
+  emailError.className = "error active";
+}
+
+</script>
+</html>
+
+
+
+
+
+
+
+

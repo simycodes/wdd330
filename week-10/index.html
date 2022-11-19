@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wdd330 Week-1 Notes</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+        <main>
+            <h1 class="notes-heading">Week 10 Notes</h1>
+            <div class="child-container">
+    
+                <ol class="center-projects">
+                    <li><a href="displayingValidationErrors.html">Program that displays validation errors using JS</a></li>
+                    <li><a href="secondObjectArgumentOfFetchMethod.html">Second Object Argument of the Fetch Method</a></li>
+                    <li><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></li>
+                </ol>
+    
+                <!-- Beginning of a main topic -->
+                <section>
+                    <h2>Client-side form validation, Using the Fetch API</h2>
+
+                    <!-- sub topic goes here -->
+                    <article>
+                      <h3><em>Client-side form validation</em></h3>
+                      <p>
+                        Before submitting data to the server, it is important to ensure all required form 
+                        controls are filled out, in the correct format. This is called client-side form
+                        validation, and helps ensure data submitted matches the requirements set forth 
+                        in the various form controls. 
+                      </p>
+
+                      <p>
+                        Your apps should always perform security checks on any form-submitted data on the
+                        server-side as well as the client-side, because client-side validation is too easy
+                        to bypass, so malicious users can still easily send bad data through to your server.
+                      </p>
+
+                      <p>
+                         Validation done in the browser is called client-side validation, while validation 
+                         done on the server is called server-side validation.
+                      </p>
+
+                      <h4>Why Validate Data</h4>
+                      <ul>
+                        <li>We want to get the right data, in the right format. Our applications won't work 
+                          properly if our users' data is stored in the wrong format, is incorrect, or is 
+                          omitted altogether.
+                        </li>
+                        <li>
+                            We want to protect our users' data. Forcing our users to enter secure passwords
+                            makes it easier to protect their account information.
+                        </li>
+                        <li>
+                            We want to protect ourselves. There are many ways that malicious users can misuse 
+                            unprotected forms to damage the application. 
+                        </li>
+                      </ul>
+
+                      <h4>Built-in form validation</h4>
+                      <p>
+                        This is done by using validation attributes on form elements. 
+                        These validation attributes include required, minlength and maxlength,min and max,
+                        type,pattern and regular expressions.
+                      </p>
+                      <p>
+                        If the data entered in a form field follows all of the rules specified by the above
+                        attributes, it is considered valid. If not, it is considered invalid.
+                      </p>
+
+                      <h4>The Constraint Validation API</h4>
+                      <p>
+                        Customizing these error messages is one of the most common use cases of the constraint validation API.
+                      </p>
+                    </article>
+                    
+                    <!-- sub topic goes here -->
+                    <article>
+                       <h3><em>Using the Fetch API</em></h3>
+                       <p>
+                        <b>
+                            The Fetch API provides a JavaScript interface for accessing and manipulating parts
+                            of the protocol, such as requests and responses. It also provides a global fetch()
+                            method that provides an easy, logical way to fetch resources asynchronously across
+                            the network.
+                        </b>
+                       </p>
+
+                       <p>
+                        A basic fetch request is really simple to set up. Have a look at the following code:
+                          <pre>
+                            fetch('http://example.com/movies.json')
+                            .then((response) => response.json())
+                            .then((data) => console.log(data));
+                          </pre>
+
+                          Here we are fetching a JSON file across the network and printing it to the console.
+                          The simplest use of fetch() takes one argument — the path to the resource you want 
+                          to fetch — and does not directly return the JSON response body but instead returns 
+                          a promise that resolves with a Response object.<br>
+                          The Response object, in turn, does not directly contain the actual JSON response body
+                          but is instead a representation of the entire HTTP response. So, to extract the JSON
+                          body content from the Response object, we use the json() method, which returns a 
+                          second promise that resolves with the result of parsing the response body text as JSON.
+                       </p>
+
+                       <h4>Supplying request options</h4>
+                       <p>
+                         The fetch() method can optionally accept a second parameter, an init object that 
+                         allows you to control a number of different settings:
+                       </p>
+
+                       <p>
+                        
+                       </p>
+                       
+                    </article>
+                    
+
+                    <!-- Question section -->
+                    <div>
+                        <h4>Questions</h4>
+
+                        <article>
+                            <h4><em> </em></h4>
+                            <p>
+                            
+                            </p>
+                        
+                            <p>
+                    
+                            </p>
+
+                        </article>   
+                    </div>
+                    
+                    <p><a href="displayingValidationErrors.html">Program that displays validation errors using JS</a></p>
+                    <p><a href="secondObjectArgumentOfFetchMethod.html">Second Object Argument of the Fetch Method</a></p>
+                    <p><a href="../quiz-ninja-project/gameLevelChapterCurrent/index.html">The Quiz Ninja Project - See JS Concepts In Action</a></p>
+                    <p><b>NOTE:</b> Resources used include MDN</p>
+                
+                </section>
+                
+            </div> 
+    
+        </main>
+      
+</body>
+</html>

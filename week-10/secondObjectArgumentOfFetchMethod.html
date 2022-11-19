@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Displaying Validation Errors Using JS</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="../css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="../css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="../css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="../css/large.css" rel="stylesheet">
+     <!-- styles for the transforms -->
+    <link href="styles.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+      <h1>Second Object Argument of the Fetch Method</h1>
+    </header>
+
+    <main>
+        <div>
+        <p>
+          The fetch() method can optionally accept a second parameter, an init object that allows 
+          you to control a number of different settings.
+        </p>
+        <p>See JS code and use the console.</p>
+      
+    </main>
+    
+    
+</body>
+<script>
+
+// Example POST method implementation:
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
+postData('https://example.com/answer', { answer: 42 })
+  .then((data) => {
+    console.log(data); // JSON data parsed by `data.json()` call
+  });
+
+
+// Uploading JSON data - Use fetch() to POST JSON-encoded data.
+const data = { username: 'example' };
+
+fetch('https://example.com/profile', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+// Uploading a file
+// Files can be uploaded using an HTML <input type="file" /> input element, FormData() 
+// and fetch().
+const formData = new FormData();
+const fileField = document.querySelector('input[type="file"]');
+
+formData.append('username', 'abc123');
+formData.append('avatar', fileField.files[0]);
+
+fetch('https://example.com/profile/avatar', {
+  method: 'PUT',
+  body: formData
+})
+  .then((response) => response.json())
+  .then((result) => {
+    console.log('Success:', result);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+// Uploading multiple files
+// Files can be uploaded using an HTML <input type="file" multiple /> input element, 
+// FormData() and fetch().
+
+const formData = new FormData();
+const photos = document.querySelector('input[type="file"][multiple]');
+
+formData.append('title', 'My Vegas Vacation');
+let i = 0;
+for (const photo of photos.files) {
+  formData.append(`photos_${i}`, photo);
+  i++;
+}
+
+fetch('https://example.com/posts', {
+  method: 'POST',
+  body: formData,
+})
+  .then((response) => response.json())
+  .then((result) => {
+    console.log('Success:', result);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
