@@ -7,22 +7,28 @@
 // web page, although there are some subtle differences depending on what type of data is
 // returned.
 
-const apiButton = document.getElementById('chuck');
-const outputDiv = document.getElementById('output');
+const apiButton = document.getElementById('getScripture');
+const outputDiv = document.querySelector('.scripture-space')
 
 const apiURL = 'https://labs.bible.org/api/?passage=random&type=json';
 
 // Assigning an event handler to the JSON string
 apiButton.addEventListener('click', () => {
+
+    // Get the scripture from the API
     fetch(apiURL)
     .then( response => {
         outputDiv.innerHTML = 'Waiting for response...';
     if(response.ok) {
+        // Remove the hit message first
+	    const hintMessage = document.getElementById("hint-message");
+	    hintMessage.classList.add("hint-message-appear-disappear");
+        
         return response;
     }
     throw Error(response.statusText);
     })
     .then( response => response.json() )
-    .then( data => outputDiv.innerText = data[0].bookname + " " + data[0].chapter + ":" + data[0].verse + "." + data[0].text )
+    .then( data => outputDiv.innerText = data[0].bookname + " " + data[0].chapter + ":" + data[0].verse + ". " + data[0].text )
     .catch( error => console.log('There was an error:', error))
 },false);

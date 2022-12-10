@@ -39,6 +39,10 @@ const links = [
     {
       label: "Week-10 notes",
       url: "week-10/index.html"
+    },
+    {
+      label: "Challenge Two Project - Scripture Daily App",
+      url: "challengeTwoProject/index.html"
     }
 ]
 

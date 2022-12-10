@@ -109,7 +109,8 @@ ol li {
 }
 
 ol li a:hover {
-    color:#8AB7E9;
+    color:#035cd8;
+    text-decoration: underline 1px double #003580;
 }
 
 /*----------- END OF MAIN PORTFOLIO HOME PAGE--------------*/

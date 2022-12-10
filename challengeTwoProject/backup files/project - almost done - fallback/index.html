@@ -24,23 +24,28 @@
 
     <main>
 
+        
         <div class="container">
+          <h1>Scripture Daily App</h1>
+          <div class="underline"></div>
+          <div class="top-text"><b><i>Jesus Is The Way, The Truth And The Light!</i></b></div>
+          <!-- Draw Close unto the Lord Jesus and He Will Draw close to you! -->
 
-          <figure class="vehicle-image">
-            <img src="hummer.jpg" alt="vehicle" width="800" height="445">
-            <figcaption><h3>Price: $700</h3></figcaption>
-          </figure>
+          <div class="main-scripture-container">
+            <ul class="list" id="tasks-container">
+			      </ul>
+            <span id="hint-message">A Random Bible Verse Will Appear Here.</span> 
+            <div class="scripture-space" id="task"></div>
+          </div>
 
-          <div class="vehicle-details">
-            <h3>Hummer Truck Details</h3>
-            <p class="vehicle-description">
-              Do you have 6 kids and like to go off-roading? The Hummer gives you the 
-              spacious interiors with an engine to get you out of any muddy or rocky 
-              situation.
-            </p>
+          <div class="buttons">
+            <button id='getScripture'>Get Scripture!</button>
 
-            <p class="vehicle-color">Color: Yellow</p>
-            <p class="vehicle-stock"># In Stock: 5</p>
+            <div class="favorite-buttons">
+              <button id="submitTask">Add as Favorite</button>
+              <button id="all">Get Favorite Scriptures</button>
+            </div>
+            
           </div>
           
         </div>
@@ -48,6 +53,7 @@
     </main>
 
     <script src='main.js'></script>
+    <script src='storage.js'></script>
 </body>
 
 

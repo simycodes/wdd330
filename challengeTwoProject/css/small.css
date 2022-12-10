@@ -1,0 +1,200 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*----------- BODY --------------*/
+
+body {
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    background-color: #CED3DC;
+    /* background-color: #FCF7F8; */
+}
+
+h1, h2, h3, h4 {
+    color: #1573B7;
+    letter-spacing: 0.2rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    font-family:'Playfair Display', serif;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align:center;
+    font-style: italic;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+h4 {
+    font-size: 0.9rem;
+}
+
+/*-----------  APP PAGE --------------*/
+             
+.container {
+    margin: 3rem auto;
+    padding: 0.5rem;
+    width:370px;
+    height: auto;
+    background-color: #FCF7F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+}
+
+.container h1 a {
+    text-decoration: none;
+    color: #1573B7;
+}
+
+.container h1 {
+    letter-spacing: 0.2rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    font-family:'Playfair Display', serif;
+}
+
+.top-text {
+    text-align: center;
+    font-size: .8rem;
+    margin-bottom: .5rem;
+}
+
+button {
+    font-size: 1.3rem;
+    color:#275DAD;
+    background-color: #CED3DC;
+    padding:1rem;
+    border: none;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    cursor: pointer;
+}
+
+.underline {
+    margin: 0 auto;
+    width: 150px;
+    margin-bottom: 1rem;
+    border-top:5px solid #ABA9C3;
+    border-radius: 3px;
+}
+
+.scripture-space {
+    font-size: 1.2rem;
+    margin: .2rem;
+    padding: 1rem;
+    border:2px solid #ABA9C3;
+    border-radius: 3px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.favorite-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+main p {
+    line-height: 1.3rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+button:hover {
+    color:white;
+    font-style: bold;
+    background-color: #275DAD;
+    transition-duration: 0.2s;
+}
+
+.list div {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgb(188, 67, 67);
+    background-color: #CED3DC;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-right: 2rem;
+}
+
+/*------ LOCAL STORAGE FUNCTIONALITY STYLES ---------*/
+.main-scripture-container ul li {
+    /* border:2px solid red; */
+    background-color: #CED3DC;
+    border: none;
+    border-radius: 9px;
+    padding: 1rem;
+    padding-bottom: 0;
+    margin: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.main-scripture-container ul li div {
+    width: 70px;
+    margin: 0 auto;
+}
+
+.main-scripture-container ul li div button {
+    color:red;
+    width:50px;
+    background-color: #FCF7F8;
+    padding:.5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.main-scripture-container ul li i {
+    font-size: 1.5rem;
+    color:  #275DAD;
+}
+
+/*------ END OF LOCAL STORAGE FUNCTIONALITY STYLES ---------*/
+
+.hint-message-appear-disappear {
+    display:none;
+}
+
+.visibility-on-off {
+    visibility:hidden;
+}
+
+
+/*----------- WEEKLY NOTES INDEX PAGE --------------*/
+
+/*----------- END OF WEEKLY NOTES INDEX PAGE --------------*/
+
+/*----------- WEEKLY EXAMPLE APPLICATION PAGE --------------*/
+
+.application-title {
+    font-size: 1.5rem;
+}
+
+button {
+    margin: .5rem;
+}
+
+/*----------- END OF WEEKLY EXAMPLE APPLICATION PAGE --------------*/

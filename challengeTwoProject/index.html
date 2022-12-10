@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripture Daily App - By Simon Mule</title>
+
+    <!-- STYLE SHEETS -->
+    <link href="css/normalize.css" rel="stylesheet">
+    <!-- phone-default -->
+    <link href="css/small.css" rel="stylesheet">
+    <!-- enhance-tablet -->
+    <link href="css/medium.css" rel="stylesheet">
+    <!-- enhance-desktop -->
+    <link href="css/large.css" rel="stylesheet">
+
+     <!-- Montserrat font link -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main>
+ 
+        <div class="container">
+          <h1 title="Click Here To Refresh The Application"><a href="index.html">Scripture Daily App</a></h1>
+          <div class="underline"></div>
+          <div class="top-text"><b><i>Jesus Is The Way, The Truth And The Light!</i></b></div>
+
+          <div class="main-scripture-container">
+            <ul class="list" id="scripture-container"> 
+			      </ul>
+            <span id="hint-message">A Random Bible Verse Will Appear Here.</span> 
+            <div class="scripture-space" id="scripture"></div>
+          </div>
+
+          <div class="buttons">
+            <button id='getScripture' title="Click Here To Access A Random Bible Verse">Get Scripture!</button>
+
+            <div class="favorite-buttons">
+              <button id="addScripture" title="Click Here To Add The Scripture Displayed To The Favorites Collection">Add as Favorite</button>
+              <button id="getFavoriteScriptures" title="Click Here to Display All Your Favorite Scriptures">Get All Favorite Scriptures</button>
+            </div>
+            
+          </div>
+          
+        </div>
+
+    </main>
+
+    <script src='main.js'></script>
+    <script src='storage.js'></script>
+</body>
+
+
+</html>

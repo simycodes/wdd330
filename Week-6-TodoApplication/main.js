@@ -6,7 +6,7 @@ function loadAllTasks(availableTasks) {
 	const deleteBtn = document.createElement("button");
 	deleteBtn.innerHTML = "\u274C";
 
-	//Create a Mark Complete Task Button
+	// Create a Mark Complete Task Button
 	const markCompleteBtn = document.createElement("button");
 	markCompleteBtn.innerHTML = "Mark as Complete";
 	
