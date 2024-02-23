@@ -1,2 +1,2 @@
-This is repo containing files (portfolio) for the wdd330 BYU-I course.
+This is repo containing files (portfolio) for the wdd330 (JavaScript) BYU-I course.
 # wdd330
